@@ -1,0 +1,106 @@
+@use '../Settings/variables' as *;
+@use '../Settings/responsive_variables';
+
+// Icons
+// @mixin fontIcon($fontFamily: 'eliberty' !important) {
+//    font-family: $fontFamily;
+//    speak: never;
+//    font-style: normal;
+//    font-weight: 400;
+//    font-variant: normal;
+//    text-transform: none;
+//    line-height: 1;
+//    -webkit-font-smoothing: antialiased;
+//    -moz-osx-font-smoothing: grayscale;
+// }
+
+// Text
+@mixin fontSize($size: 16px,
+   $lineHeight: ($size + 10px,
+   )) {
+   font-size: $size;
+   line-height: $lineHeight;
+}
+
+@mixin fontStyle($size: 16px,
+   $weight: 400,
+   $lineHeight: ($size + 10px,
+   )) {
+   @include fontSize($size, $lineHeight);
+   font-weight: $weight;
+}
+
+// body
+@mixin body($weight: 400) {
+   @include fontStyle(14px, $weight, 22px);
+}
+
+@mixin body-bold($weight: 700) {
+   @include body($weight);
+}
+
+@mixin body-m($weight: 400) {
+   @include fontStyle(16px, $weight, 28px);
+}
+
+@mixin body-m-bold($weight: 700) {
+   @include body-m($weight);
+}
+
+@mixin body-l($weight: 400) {
+   @include fontStyle(18px, $weight, 30px);
+}
+
+@mixin body-l-bold($weight: 700) {
+   @include body-l($weight);
+}
+
+@mixin title {
+   font-family: $font-title;
+}
+
+@mixin h1 {
+   @include title;
+   @include fontSize(56px, 60px);
+
+   @media screen and (min-width: responsive_variables.$screen-l-min) {
+      @include fontSize(100px, 102px);
+   }
+}
+
+@mixin h2 {
+   @include title;
+   @include fontSize(44px, 48px);
+   letter-spacing: -0.88px;
+
+   @media screen and (min-width: responsive_variables.$screen-l-min) {
+      @include fontSize(80px, 80px);
+      letter-spacing: -1.6px;
+   }
+}
+
+@mixin h3 {
+   @include title;
+   @include fontSize(32px, 40px);
+
+   @media screen and (min-width: responsive_variables.$screen-l-min) {
+      @include fontSize(44px, 51px);
+   }
+}
+
+@mixin h4 {
+   @include title;
+   @include fontSize(22px, normal);
+
+   @media screen and (min-width: responsive_variables.$screen-l-min) {
+      font-size: 28px;
+   }
+}
+
+@mixin h5($weight: 700) {
+   @include fontStyle(20px, $weight, 30px);
+
+   @media screen and (min-width: responsive_variables.$screen-l-min) {
+      @include fontStyle(24px, $weight, 38px);
+   }
+}

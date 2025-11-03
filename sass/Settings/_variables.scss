@@ -1,0 +1,71 @@
+// Font
+$font-text: var(--font-inter), sans-serif;
+$font-title: var(--font-cheddar), sans-serif;
+$font-weather: 'eliberty-weather';
+
+// Colors
+$color-black: #060a11;
+$color-white: #ffffff;
+
+// Basic
+$color-blue: #428cb3;
+$color-blue-hover: #015785;
+$color-lightBlue: #e0eef6;
+$color-lightBlue-hover: #c4dae6;
+$color-darkBlue: #002d45;
+$color-darkBlue-hover: #3e5865;
+
+// Grey
+$color-grey: #dadaf3;
+$color-lightGrey: #eaeaea;
+$color-veryLightGrey: #f5f5f5;
+$color-mediumGrey: #c9c9c9;
+$color-darkGrey: #a5a5a5;
+$color-veryDarkGrey: #727272;
+
+// Others
+$color-primary: $color-darkBlue;
+$color-secondary: $color-blue;
+$color-light: $color-lightBlue;
+$color-ghost: transparent;
+
+$color-primary-hover: $color-blue;
+$color-secondary-hover: $color-blue-hover;
+$color-light-hover: $color-lightBlue-hover;
+$color-ghost-hover: $color-veryLightGrey;
+
+$color-disabled: $color-white;
+$color-disabled-background: $color-mediumGrey;
+
+// Text
+$text-color: $color-darkBlue;
+
+// Wrapper
+$wrapper: 1512px;
+
+// Radius
+$radius-xs: 12px;
+$radius-s: 16px;
+$radius-m: 24px;
+$radius-l: 30px;
+$radius: 40px;
+
+// Border
+$border: 2px solid $color-black;
+
+// Shadow
+/* shadow-S */
+$shadow-s: 0px 2px 16px 0px rgba($color-black, 0.22);
+
+/* shadow-M */
+$shadow-m: 0px 2px 16px 0px $color-black;
+
+/* shadow-L */
+$shadow-l: 0 2px 32px 0 rgba($color-black, 0.18);
+
+// Spacing
+$spacing: 60px;
+$spacing-min: 20px;
+
+// Animation
+$animation: 300ms;

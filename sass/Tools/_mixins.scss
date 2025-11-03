@@ -1,0 +1,25 @@
+@use '../Settings/variables' as *;
+@use '../Settings/responsive_variables';
+@use '../Tools/typography';
+
+// Padding
+@mixin paddingWrapper {
+   padding-right: 20px;
+   padding-left: 20px;
+
+   @media screen and (min-width: responsive_variables.$screen-l-min) {
+      padding-right: 96px;
+      padding-left: 96px;
+   }
+}
+
+// Wrapper
+@mixin wrapper($size: $wrapper) {
+   @include paddingWrapper;
+   margin-left: auto;
+   margin-right: auto;
+   position: relative;
+   z-index: 1;
+   width: 100%;
+   max-width: $size;
+}

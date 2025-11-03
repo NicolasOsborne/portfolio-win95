@@ -1,0 +1,10 @@
+@use '../Settings/variables' as *;
+
+a {
+   color: $text-color;
+   text-decoration: underline;
+
+   &:hover {
+      text-decoration: none;
+   }
+}
