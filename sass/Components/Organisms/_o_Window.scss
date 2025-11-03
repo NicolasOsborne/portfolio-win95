@@ -1,0 +1,13 @@
+@use '../../Settings/variables' as *;
+
+.o_Window {
+   background-color: $color-surface;
+   padding: 1px;
+   border: none;
+   box-shadow: $border-window-outer, $border-window-inner;
+
+   &_content {
+      padding: 10px;
+      background-color: $color-surface;
+   }
+}

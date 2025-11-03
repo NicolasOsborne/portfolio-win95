@@ -1,57 +1,86 @@
 // Font
-$font-text: var(--font-inter), sans-serif;
-$font-title: var(--font-cheddar), sans-serif;
-$font-weather: 'eliberty-weather';
+$font-text: var(--font-arial), sans-serif;
+$font-title: var(--font-pixelated), sans-serif;
 
 // Colors
-$color-black: #060a11;
+$color-black: #222222;
 $color-white: #ffffff;
 
 // Basic
-$color-blue: #428cb3;
-$color-blue-hover: #015785;
-$color-lightBlue: #e0eef6;
-$color-lightBlue-hover: #c4dae6;
-$color-darkBlue: #002d45;
-$color-darkBlue-hover: #3e5865;
-
-// Grey
-$color-grey: #dadaf3;
-$color-lightGrey: #eaeaea;
-$color-veryLightGrey: #f5f5f5;
-$color-mediumGrey: #c9c9c9;
-$color-darkGrey: #a5a5a5;
-$color-veryDarkGrey: #727272;
+$color-background: #008080;
+$color-blue: #000080;
+$color-highlight: #1084d0;
+$color-veryLightGrey: #dfdfdf;
+$color-lightGrey: #b5b5b5;
+$color-grey: #808080;
+$color-frame: #0a0a0a;
+$color-surface: #c0c0c0;
 
 // Others
-$color-primary: $color-darkBlue;
-$color-secondary: $color-blue;
-$color-light: $color-lightBlue;
-$color-ghost: transparent;
-
-$color-primary-hover: $color-blue;
-$color-secondary-hover: $color-blue-hover;
-$color-light-hover: $color-lightBlue-hover;
-$color-ghost-hover: $color-veryLightGrey;
-
-$color-disabled: $color-white;
-$color-disabled-background: $color-mediumGrey;
+$window-frame: $color-frame;
+$button-highlight: $color-white;
+$button-shadow: $color-grey;
+$button-face: $color-surface;
 
 // Text
-$text-color: $color-darkBlue;
+$text-color: $color-black;
 
 // Wrapper
 $wrapper: 1512px;
 
 // Radius
-$radius-xs: 12px;
-$radius-s: 16px;
-$radius-m: 24px;
-$radius-l: 30px;
 $radius: 40px;
 
-// Border
-$border: 2px solid $color-black;
+// Borders
+// Buttons
+$border-width: 1px;
+
+$border-raised-outer: inset -1px -1px $window-frame,
+   inset 1px 1px $button-highlight;
+
+$border-raised-inner: inset -2px -2px $button-shadow,
+   inset 2px 2px $button-face;
+
+$border-sunken-outer: inset -1px -1px $button-highlight,
+   inset 1px 1px $window-frame;
+
+$border-sunken-inner: inset -2px -2px $button-face,
+   inset 2px 2px $button-shadow;
+
+$button-border-raised-outer: inset -2px -2px $window-frame,
+   inset 1px 1px $window-frame;
+
+$button-border-raised-inner: inset 2px 2px $button-highlight,
+   inset -3px -3px $button-shadow,
+   inset 3px 3px $button-face;
+
+$button-border-sunken-outer: inset 2px 2px $window-frame,
+   inset -1px -1px $window-frame;
+
+$button-border-sunken-inner: inset -2px -2px $button-highlight,
+   inset 3px 3px $button-shadow,
+   inset -3px -3px $button-face;
+
+// Windows
+$border-window-outer: inset -1px -1px $window-frame,
+   inset 1px 1px $button-face;
+
+$border-window-inner: inset -2px -2px $button-shadow,
+   inset 2px 2px $button-highlight;
+
+// Inputs
+$border-input: inset -1px -1px $button-highlight,
+   inset 1px 1px $button-shadow,
+   inset -2px -2px $button-face,
+   inset 2px 2px $window-frame;
+$border-status-input: inset -1px -1px $button-face,
+   inset 1px 1px $button-shadow;
+
+// Tabs
+$border-tab: inset -1px 0 $window-frame,
+   inset 1px 1px $button-face,
+   inset -2px 0 $button-shadow,
+   inset 2px 2px $button-highlight;
 
 // Shadow
 /* shadow-S */

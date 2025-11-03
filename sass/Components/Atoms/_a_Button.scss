@@ -1,0 +1,24 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/typography';
+
+.a_Button {
+   @include typography.body;
+   cursor: pointer;
+   background-color: $button-face;
+   color: $text-color;
+   font-size: 12px;
+   padding: 7px 20px 5px 20px;
+   border: none;
+   box-shadow: inset 1px 1px 0 1px $button-highlight, inset 0 0 0 1px $button-shadow, 1px 1px 0 0 $color-black;
+   width: 100%;
+
+   &:active {
+      box-shadow: $border-sunken-outer,
+         $border-sunken-inner;
+   }
+
+   &:disabled {
+      color: $color-grey;
+      cursor: default;
+   }
+}

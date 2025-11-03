@@ -1,0 +1,27 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/typography';
+
+.m_TitleBar {
+   background: linear-gradient(90deg, $color-blue, $color-highlight);
+   height: 30px;
+   padding: 3px 2px 3px 3px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 0;
+   margin-bottom: 20px;
+   font-weight: bold;
+
+   &_title {
+      @include typography.body-bold;
+      color: $color-white;
+   }
+
+   &_controls {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 5px;
+   }
+}
