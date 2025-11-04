@@ -1,0 +1,12 @@
+{
+  "common": {
+    "404": "404"
+  },
+  "header": {
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "experiences": "Expériences",
+    "contact": "Contact"
+  }
+}

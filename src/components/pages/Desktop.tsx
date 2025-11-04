@@ -2,11 +2,13 @@
 
 import { FC } from 'react'
 
-export type DesktopProps = {
+export const pageSlug = 'desktop'
+
+export type DesktopPageProps = {
   username: string
 }
 
-const Desktop: FC<DesktopProps> = (props) => {
+const Desktop: FC<DesktopPageProps> = (props) => {
   const { username } = props
 
   const componentsClass = 'p_Desktop'
