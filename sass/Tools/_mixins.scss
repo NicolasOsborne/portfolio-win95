@@ -42,8 +42,9 @@
 // 3D sunken border
 @mixin border-sunken {
    box-shadow:
-      inset -1px -1px $button-highlight,
-      inset 1px 1px $button-shadow;
+      inset 0px 0px 0px 0px,
+      inset 1px 1px 0px 0px $button-shadow,
+      .5px .5px 0px .5px $button-highlight;
 }
 
 // Window-style

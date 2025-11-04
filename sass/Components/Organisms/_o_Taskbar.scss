@@ -1,8 +1,11 @@
 @use '../../Settings/variables' as *;
 @use '../../Settings/responsive_variables';
 @use '../../Tools/typography';
+@use '../../Tools/mixins';
 
 .o_TaskBar {
+   @include mixins.border-window;
+
    position: fixed;
    bottom: 0;
    left: 0;
@@ -13,12 +16,6 @@
    padding: 2px;
    z-index: 2;
    background-color: $window-face;
-   box-shadow:
-      inset .5px .5px 0px .5px $color-white,
-      inset 0 0 0 1px #868a8e,
-      1px 0px 0 0px $color-white,
-      0px 1px 0 0px $color-black,
-      1px 1px 0 0px $color-black;
 
    &_start {
       display: inline-flex;
@@ -40,11 +37,7 @@
 
    &_right {
       @include typography.body;
-
-      box-shadow:
-         inset 0px 0px 0px 0px,
-         inset 1px 1px 0px 0px #868a8e,
-         .5px .5px 0px .5px $color-white;
+      @include mixins.border-sunken;
       padding-top: 2px;
       padding-right: 6px;
       padding-left: 6px;
@@ -54,12 +47,5 @@
       justify-content: center;
       gap: 10px;
       height: 100%;
-   }
-
-   &_locale {}
-
-   &_time {
-      display: inline-block;
-      white-space: nowrap;
    }
 }
