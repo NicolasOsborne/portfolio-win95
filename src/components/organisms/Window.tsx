@@ -1,10 +1,11 @@
 import { FC, ReactNode } from 'react'
 import TitleBar from '@/components/molecules/TitleBar'
+import ControlType from '@/enums/ControlType'
 
 export type WindowProps = {
   title: string
   children: ReactNode
-  controls?: ReactNode
+  controls?: ControlType[]
   className?: string
 }
 
@@ -16,16 +17,11 @@ const Window: FC<WindowProps> = ({
 }) => {
   const componentsClass = 'o_Window'
 
-  const defaultControls = (
-    <button className={`${componentsClass}_close`}>X</button>
-  )
+  const defaultControls = [ControlType.CLOSE]
 
   return (
     <div className={`${componentsClass} ${className}`}>
-      <TitleBar
-        title={title}
-        controls={controls !== undefined ? controls : defaultControls}
-      />
+      <TitleBar title={title} controls={controls ?? defaultControls} />
       <div className={`${componentsClass}_content`}>{children}</div>
     </div>
   )

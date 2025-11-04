@@ -1,19 +1,6 @@
 @use '../Settings/variables' as *;
 @use '../Settings/responsive_variables';
 
-// Icons
-// @mixin fontIcon($fontFamily: 'eliberty' !important) {
-//    font-family: $fontFamily;
-//    speak: never;
-//    font-style: normal;
-//    font-weight: 400;
-//    font-variant: normal;
-//    text-transform: none;
-//    line-height: 1;
-//    -webkit-font-smoothing: antialiased;
-//    -moz-osx-font-smoothing: grayscale;
-// }
-
 // Text
 @mixin fontSize($size: 16px,
    $lineHeight: ($size + 10px,
@@ -30,14 +17,26 @@
    font-weight: $weight;
 }
 
-// body
-@mixin body($weight: 400) {
-   @include fontStyle(14px, $weight, 22px);
+@mixin body {
+   font-family: 'MS Sans Serif', Arial, sans-serif;
+   font-size: 12px;
+   line-height: 1;
+   color: $color-black;
 }
 
-@mixin body-bold($weight: 700) {
-   @include body($weight);
+@mixin body-bold {
+   @include body;
+   font-weight: bold;
 }
+
+// body
+// @mixin body($weight: 400) {
+//    @include fontStyle(14px, $weight, 22px);
+// }
+
+// @mixin body-bold($weight: 700) {
+//    @include body($weight);
+// }
 
 @mixin body-m($weight: 400) {
    @include fontStyle(16px, $weight, 28px);

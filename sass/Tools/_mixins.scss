@@ -23,3 +23,32 @@
    width: 100%;
    max-width: $size;
 }
+
+// Border mixins
+@mixin border-raised {
+   box-shadow:
+      inset -1px -1px $button-shadow,
+      inset 1px 1px $button-highlight;
+}
+
+// 3D sunken border
+@mixin border-sunken {
+   box-shadow:
+      inset -1px -1px $button-highlight,
+      inset 1px 1px $button-shadow;
+}
+
+// Window-style
+@mixin border-window {
+   box-shadow:
+      inset -1px -1px $button-shadow,
+      inset 1px 1px $button-highlight,
+      inset -2px -2px $color-black,
+      inset 2px 2px $color-grey-verylight;
+}
+
+// Flat borders
+@mixin border-flat {
+   border: 1px solid $button-shadow;
+   background-color: $button-face;
+}

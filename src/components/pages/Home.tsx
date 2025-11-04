@@ -4,7 +4,6 @@ import { FC } from 'react'
 import AuthProvider, { useAuth } from '@/context/AuthContext'
 import Desktop from '@/components/pages/Desktop'
 import Login from '@/components/pages/Login'
-import TaskBar from '@/components/organisms/TaskBar'
 import { Content, Locale } from '@/types/contentType'
 
 type HomePageProps = {
@@ -20,10 +19,7 @@ const AppContent: FC = () => {
     <div className='page'>
       <main className='main'>
         {isAuthenticated ? (
-          <>
-            <Desktop username={user?.username || ''} />
-            <TaskBar />
-          </>
+          <Desktop username={user?.username || ''} />
         ) : (
           <Login />
         )}

@@ -1,27 +1,46 @@
 @use '../../Settings/variables' as *;
-@use '../../Settings/responsive_variables';
 @use '../../Tools/typography';
+@use '../../Tools/mixins';
 
 .m_TitleBar {
+   @include typography.body-bold;
+
    background: linear-gradient(90deg, $color-blue, $color-highlight);
-   height: 30px;
-   padding: 3px 2px 3px 3px;
+   height: 24px;
+   padding: 2px 4px;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   margin-top: 0;
-   margin-bottom: 20px;
-   font-weight: bold;
+   color: $color-white;
+   user-select: none;
 
    &_title {
-      @include typography.body-bold;
       color: $color-white;
+      font-weight: bold;
+      text-shadow: 1px 1px 0 $color-black;
    }
 
    &_controls {
       display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      gap: 5px;
+      gap: 3px;
+
+      button {
+         @include mixins.border-raised;
+
+         width: 16px;
+         height: 16px;
+         padding: 0;
+         background-color: $button-face;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-weight: bold;
+         line-height: 0;
+         cursor: pointer;
+
+         &:active {
+            @include mixins.border-sunken;
+         }
+      }
    }
 }

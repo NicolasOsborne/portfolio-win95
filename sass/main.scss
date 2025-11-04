@@ -17,8 +17,10 @@
 // Components
 // Atoms
 @use 'Components/Atoms/a_Button';
+@use 'Components/Atoms/a_Control.scss';
 
 // Molecules
+@use 'Components/Molecules/m_Controls';
 @use 'Components/Molecules/m_TitleBar';
 
 // Organisms

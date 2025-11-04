@@ -1,13 +1,20 @@
 @use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
 
 .o_Window {
-   background-color: $color-surface;
-   padding: 1px;
+   @include mixins.border-window;
+
+   background-color: $window-face;
    border: none;
-   box-shadow: $border-window-outer, $border-window-inner;
+   padding: 2px;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
 
    &_content {
-      padding: 10px;
-      background-color: $color-surface;
+      @include mixins.border-flat;
+
+      background-color: $window-face;
+      padding: 8px;
    }
 }

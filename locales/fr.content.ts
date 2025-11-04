@@ -2,11 +2,11 @@ import { Content } from '@/types/contentType'
 
 export const contentFr: Content = {
   login: {
-    title: 'Bienvenue au Portfolio de Nicoo',
+    title: 'Bienvenue sur le Portfolio de Nicoo',
     prompt:
-      "Entrez un nom d'utilisateur et un mot de passe pour vous connecter au système.",
-    username: "Nom d'utilisateur:",
-    password: 'Mot de passe:',
+      "Saisissez votre nom d'utilisteur et votre mot de passe pour vous connecter au système.",
+    username: 'Username :',
+    password: 'Password :',
     ok: 'Ok',
     cancel: 'Annuler',
     error:

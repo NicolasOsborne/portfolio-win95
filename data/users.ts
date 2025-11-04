@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs'
 import { User } from '@/types/userType'
 
 const rawUsers: Array<{ id: string; username: string; password: string }> = [
-  { id: 'user_visitor', username: 'Visitor', password: 'password' },
+  { id: 'user_visitor', username: 'visitor', password: 'password' },
   { id: 'user_nico', username: 'nico', password: 'admin' },
 ]
 

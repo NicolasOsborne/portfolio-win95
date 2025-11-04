@@ -3,8 +3,8 @@ import { Content } from '@/types/contentType'
 export const contentEn: Content = {
   login: {
     title: 'Welcome to Nicoo Portfolio',
-    prompt: 'Type a user name and password to log on to the system.',
-    username: 'User name:',
+    prompt: 'Enter your username and password to log into the system.',
+    username: 'Username:',
     password: 'Password:',
     ok: 'Ok',
     cancel: 'Cancel',
