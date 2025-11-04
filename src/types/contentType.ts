@@ -11,8 +11,21 @@ export type LoginContent = {
 }
 
 export type DesktopContent = {
+  menu: MenuContent
   greeting: string
   logout: string
+}
+
+export type MenuEntry = {
+  id: string
+  label: string
+  icon: string
+  contentKey: 'about' | 'skills' | 'projects' | 'experience' | 'contact'
+}
+
+export type MenuContent = {
+  title: string
+  list: MenuEntry[]
 }
 
 export type AboutContent = {

@@ -11,6 +11,41 @@ export const contentEn: Content = {
     error: 'Logon Failure: Unknown user name or bad password.',
   },
   desktop: {
+    menu: {
+      title: 'Start',
+      list: [
+        {
+          id: 'about',
+          label: 'About',
+          icon: '/assets/win95/icons/menu/about.svg',
+          contentKey: 'about',
+        },
+        {
+          id: 'skills',
+          label: 'Skills',
+          icon: '/assets/win95/icons/menu/skills.svg',
+          contentKey: 'skills',
+        },
+        {
+          id: 'projects',
+          label: 'Projects',
+          icon: '/assets/win95/icons/menu/projects.svg',
+          contentKey: 'projects',
+        },
+        {
+          id: 'experience',
+          label: 'Experiences',
+          icon: '/assets/win95/icons/menu/experience.svg',
+          contentKey: 'experience',
+        },
+        {
+          id: 'contact',
+          label: 'Contact',
+          icon: '/assets/win95/icons/menu/contact.svg',
+          contentKey: 'contact',
+        },
+      ],
+    },
     greeting: 'Welcome back, {username}!',
     logout: 'Log Off',
   },

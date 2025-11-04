@@ -2,6 +2,7 @@
 
 import { FC } from 'react'
 import AuthProvider, { useAuth } from '@/context/AuthContext'
+import ContentProvider from '@/context/ContentContext'
 import Desktop from '@/components/pages/Desktop'
 import Login from '@/components/pages/Login'
 import { Content, Locale } from '@/types/contentType'
@@ -13,17 +14,11 @@ type HomePageProps = {
 }
 
 const AppContent: FC = () => {
-  const { isAuthenticated, user } = useAuth()
+  const { isAuthenticated } = useAuth()
 
   return (
     <div className='page'>
-      <main className='main'>
-        {isAuthenticated ? (
-          <Desktop username={user?.username || ''} />
-        ) : (
-          <Login />
-        )}
-      </main>
+      <main className='main'>{isAuthenticated ? <Desktop /> : <Login />}</main>
     </div>
   )
 }
@@ -34,13 +29,14 @@ const Home: FC<HomePageProps> = ({
   currentSlug,
 }) => {
   return (
-    <AuthProvider
-      serverContent={serverContent}
+    <ContentProvider
+      initialContent={serverContent}
       initialLocale={initialLocale}
-      initialSlug={currentSlug}
     >
-      <AppContent />
-    </AuthProvider>
+      <AuthProvider initialSlug={currentSlug}>
+        <AppContent />
+      </AuthProvider>
+    </ContentProvider>
   )
 }
 

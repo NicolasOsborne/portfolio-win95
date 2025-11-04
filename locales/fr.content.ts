@@ -13,6 +13,41 @@ export const contentFr: Content = {
       "Échec de la connexion : Nom d'utilisateur inconnu ou mauvais mot de passe.",
   },
   desktop: {
+    menu: {
+      title: 'Démarrer',
+      list: [
+        {
+          id: 'about',
+          label: 'À propos',
+          icon: '/assets/win95/icons/menu/about.svg',
+          contentKey: 'about',
+        },
+        {
+          id: 'skills',
+          label: 'Compétences',
+          icon: '/assets/win95/icons/menu/skills.svg',
+          contentKey: 'skills',
+        },
+        {
+          id: 'projects',
+          label: 'Projets',
+          icon: '/assets/win95/icons/menu/projects.svg',
+          contentKey: 'projects',
+        },
+        {
+          id: 'experience',
+          label: 'Expériences',
+          icon: '/assets/win95/icons/menu/experience.svg',
+          contentKey: 'experience',
+        },
+        {
+          id: 'contact',
+          label: 'Contact',
+          icon: '/assets/win95/icons/menu/contact.svg',
+          contentKey: 'contact',
+        },
+      ],
+    },
     greeting: 'Bienvenue, {username}!',
     logout: 'Déconnexion',
   },

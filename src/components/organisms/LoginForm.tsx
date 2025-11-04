@@ -5,10 +5,12 @@ import Button from '@/components/atoms/Button'
 import Window from '@/components/organisms/Window'
 import { useAuth } from '@/context/AuthContext'
 import ControlType from '@/enums/ControlType'
+import { useContent } from '@/context/ContentContext'
 
 const LoginForm: FC = () => {
-  const { login, content } = useAuth()
-  const { login: loginContent } = content
+  const { login } = useAuth()
+  const { content } = useContent()
+  // const { login: loginContent } = content
 
   const componentsClass = 'o_LoginForm'
 
@@ -26,7 +28,7 @@ const LoginForm: FC = () => {
       const success = await login(username, password)
 
       if (!success) {
-        setError(loginContent.error)
+        setError(content.login.error)
       }
     } catch (err) {
       console.error('Login failed unexpectedly:', err)
@@ -38,18 +40,18 @@ const LoginForm: FC = () => {
 
   return (
     <div className={componentsClass}>
-      <Window title={loginContent.title} controls={[ControlType.HELP]}>
+      <Window title={content.login.title} controls={[ControlType.HELP]}>
         <div className={`${componentsClass}_window`}>
           <div className={`${componentsClass}_icon`}></div>
           <form onSubmit={handleLogin} className={`${componentsClass}_form`}>
             <div className={`${componentsClass}_content`}>
               <p className={`${componentsClass}_title`}>
-                {loginContent.prompt}
+                {content.login.prompt}
               </p>
               <div className={`${componentsClass}_fields`}>
                 <label className={`${componentsClass}_row`}>
                   <span className={`${componentsClass}_label`}>
-                    {loginContent.username}
+                    {content.login.username}
                   </span>
                   <input
                     type='text'
@@ -62,7 +64,7 @@ const LoginForm: FC = () => {
                 </label>
                 <label className={`${componentsClass}_row`}>
                   <span className={`${componentsClass}_label`}>
-                    {loginContent.password}
+                    {content.login.password}
                   </span>
                   <input
                     type='password'
@@ -79,10 +81,10 @@ const LoginForm: FC = () => {
 
             <div className={`${componentsClass}_buttons`}>
               <Button type='submit' disabled={isLoading}>
-                {isLoading ? '...' : loginContent.ok}
+                {isLoading ? '...' : content.login.ok}
               </Button>
               <Button type='button' disabled={isLoading}>
-                {loginContent.cancel}
+                {content.login.cancel}
               </Button>
             </div>
           </form>

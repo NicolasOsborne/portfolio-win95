@@ -1,12 +1,14 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Button from '../atoms/Button'
 import Image from 'next/image'
 import Start from '@/../public/assets/win95/icons/menu/start.svg'
 import LocaleSwitch from '../atoms/LocaleSwitch'
 import Clock from '../atoms/Clock'
 import { useCurrentLocale } from '@/hooks/useCurrentLocale'
+import Menu from '../molecules/Menu'
+import { useContent } from '@/context/ContentContext'
 
 export type TaskBarProps = {
   list?: { label: string; path: string }[]
@@ -15,6 +17,9 @@ export type TaskBarProps = {
 const TaskBar: FC<TaskBarProps> = ({ list }) => {
   const componentsClass = 'o_TaskBar'
   const currentLocale = useCurrentLocale()
+  const { content } = useContent()
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <div className={componentsClass}>
@@ -22,6 +27,7 @@ const TaskBar: FC<TaskBarProps> = ({ list }) => {
         type='button'
         disabled={false}
         className={`${componentsClass}_start`}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <Image
           src={Start}
@@ -30,8 +36,15 @@ const TaskBar: FC<TaskBarProps> = ({ list }) => {
           height={20}
           draggable={false}
         />
-        Start
+        {content.desktop.menu.title}
       </Button>
+
+      {isMenuOpen && (
+        <Menu
+          entries={content.desktop.menu.list}
+          logoutLabel={content.desktop.logout}
+        />
+      )}
 
       <div className={`${componentsClass}_tasks`}>{/* task buttons */}</div>
 

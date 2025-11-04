@@ -12,14 +12,12 @@ import {
 } from 'react'
 import { useRouter } from 'next/navigation'
 import jwt from 'jsonwebtoken'
-import { Content, Locale } from '@/types/contentType'
 import { User } from '@/types/userType'
+import { useContent } from './ContentContext'
 
 type AuthContextType = {
   isAuthenticated: boolean
   user: User | null
-  content: Content
-  locale: Locale
   login: (username: string, password: string) => Promise<boolean>
   logout: () => void
 }
@@ -28,23 +26,16 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 type AuthProviderProps = {
   children: ReactNode
-  serverContent: Content
-  initialLocale: Locale
   initialSlug?: string
 }
 
 const TOKEN_KEY = 'jwt_token'
 
-const AuthProvider: FC<AuthProviderProps> = ({
-  children,
-  serverContent,
-  initialLocale,
-  initialSlug,
-}) => {
+const AuthProvider: FC<AuthProviderProps> = ({ children, initialSlug }) => {
   const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
   const [isReady, setIsReady] = useState(false)
-  const locale = initialLocale
+  const { locale } = useContent()
 
   useEffect(() => {
     const token = localStorage.getItem(TOKEN_KEY)
@@ -128,12 +119,10 @@ const AuthProvider: FC<AuthProviderProps> = ({
     () => ({
       isAuthenticated: !!user,
       user,
-      content: serverContent,
-      locale,
       login,
       logout,
     }),
-    [user, locale, serverContent, login, logout]
+    [user, login, logout]
   )
 
   if (!isReady) return null
