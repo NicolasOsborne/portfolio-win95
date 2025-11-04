@@ -1,20 +1,23 @@
 @use '../../Settings/variables' as *;
 @use '../../Settings/responsive_variables';
 @use '../../Tools/typography';
+@use '../../Tools/mixins';
 
 .o_LoginForm {
    position: absolute;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 400px;
+   width: 450px;
    z-index: 20;
 
    &_window {
+      @include mixins.border-flat;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-start;
+      height: 140px;
    }
 
    &_icon {}
@@ -50,9 +53,9 @@
       gap: 8px;
    }
 
-   &_label {}
-
-   &_input {}
+   &_input {
+      @include mixins.border-input;
+   }
 
    &_buttons {
       display: flex;

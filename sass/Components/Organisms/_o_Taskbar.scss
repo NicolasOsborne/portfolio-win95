@@ -7,13 +7,59 @@
    bottom: 0;
    left: 0;
    width: 100%;
-   height: 40px;
-   // background-color: $color-darkBlue;
-   // border-top: 2px solid $color-white;
-   // border-left: 2px solid $color-white;
-   // border-right: 2px solid $color-darkBlue;
-   // border-bottom: 2px solid $color-darkBlue;
+   height: 32px;
    display: flex;
    align-items: center;
-   padding: 0 10px;
+   padding: 2px;
+   z-index: 2;
+   background-color: $window-face;
+   box-shadow:
+      inset .5px .5px 0px .5px $color-white,
+      inset 0 0 0 1px #868a8e,
+      1px 0px 0 0px $color-white,
+      0px 1px 0 0px $color-black,
+      1px 1px 0 0px $color-black;
+
+   &_start {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px;
+      padding: 2px 5px;
+      margin-right: 2px;
+      max-width: fit-content;
+      height: 100%;
+   }
+
+   &_tasks {
+      padding-left: 0px;
+      margin-left: 2px;
+      width: 100%;
+      display: flex;
+   }
+
+   &_right {
+      @include typography.body;
+
+      box-shadow:
+         inset 0px 0px 0px 0px,
+         inset 1px 1px 0px 0px #868a8e,
+         .5px .5px 0px .5px $color-white;
+      padding-top: 2px;
+      padding-right: 6px;
+      padding-left: 6px;
+      padding-bottom: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 100%;
+   }
+
+   &_locale {}
+
+   &_time {
+      display: inline-block;
+      white-space: nowrap;
+   }
 }

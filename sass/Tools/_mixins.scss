@@ -27,8 +27,16 @@
 // Border mixins
 @mixin border-raised {
    box-shadow:
-      inset -1px -1px $button-shadow,
-      inset 1px 1px $button-highlight;
+      inset 1px 1px 0 1px $button-highlight,
+      inset 0 0 0 1px $button-shadow,
+      1px 1px 0 0 $button-border;
+}
+
+@mixin border-pressed {
+   box-shadow:
+      inset 0px 0px 0px 0px,
+      inset 1px 1px 0 0 $button-shadow,
+      inset -1px -1px 0 0 $button-face;
 }
 
 // 3D sunken border
@@ -41,14 +49,33 @@
 // Window-style
 @mixin border-window {
    box-shadow:
-      inset -1px -1px $button-shadow,
-      inset 1px 1px $button-highlight,
-      inset -2px -2px $color-black,
-      inset 2px 2px $color-grey-verylight;
+      inset .5px .5px 0px .5px $button-highlight,
+      inset 0 0 0 1px $button-shadow,
+      1px 0px 0 0px $button-border,
+      1px 1px 0 0px $button-border;
 }
 
 // Flat borders
 @mixin border-flat {
-   border: 1px solid $button-shadow;
-   background-color: $button-face;
+   padding: 6px;
+   box-shadow:
+      inset 0px 0px 0px 0px,
+      inset 1px 1px 0px 0px $button-shadow,
+      .5px .5px 0px .5px $button-highlight;
+}
+
+// Input
+@mixin border-input {
+   outline: none;
+   border: none;
+   padding: 3px 3px 5px 3px;
+   color: $text-color;
+   background-color: $color-white;
+   border-top: 1px solid $button-shadow;
+   border-right-width: 0;
+   border-bottom-width: 0;
+   border-left: 1px solid $button-shadow;
+   box-shadow:
+      inset -1px -1px 0 0 $button-face,
+      inset 1px 1px 0 0 $button-border, .5px .5px 0 .5px $button-highlight;
 }

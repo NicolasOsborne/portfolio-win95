@@ -8,20 +8,19 @@ $color-white: #ffffff;
 $color-blue: #000080;
 $color-highlight: #1084d0;
 
-$color-grey-dark: #808080;
-$color-grey-light: #c0c0c0;
+$color-grey: #c3c7cb;
 $color-grey-verylight: #dfdfdf;
+$color-grey-light: #c0c0c0;
+$color-grey-dark: #868a8e;
 
 $color-background: #008080;
-$color-active-caption: #000080;
-$color-inactive-caption: #808080;
 
 // SURFACES & ELEMENTS
-$window-face: $color-grey-light;
-$button-face: $color-grey-light;
+$window-face: $color-grey;
+$button-face: $color-grey;
 $button-highlight: $color-white;
 $button-shadow: $color-grey-dark;
-$button-border: #404040;
+$button-border: $color-black;
 
 // TEXT
 $text-color: $color-black;

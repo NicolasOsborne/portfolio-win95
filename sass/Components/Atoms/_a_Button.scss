@@ -13,11 +13,10 @@
    border: none;
    box-sizing: border-box;
    text-align: center;
+   position: relative;
 
    &:active {
-      @include mixins.border-sunken;
-
-      padding: 4px 11px 2px 13px;
+      @include mixins.border-pressed;
    }
 
    &:disabled {
@@ -29,8 +28,19 @@
       opacity: 0.8;
    }
 
+   &:focus,
    &:focus-visible {
-      outline: 1px dotted $color-black;
-      outline-offset: -4px;
+      outline: none;
+
+      &::after {
+         content: '';
+         position: absolute;
+         top: 4px;
+         left: 4px;
+         right: 4px;
+         bottom: 4px;
+         border: 1px dotted $color-black;
+         pointer-events: none;
+      }
    }
 }
