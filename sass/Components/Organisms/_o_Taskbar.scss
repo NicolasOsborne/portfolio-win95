@@ -14,7 +14,7 @@
    display: flex;
    align-items: center;
    padding: 2px;
-   z-index: 2;
+   z-index: 999;
    background-color: $window-face;
 
    &_start {

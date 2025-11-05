@@ -3,7 +3,7 @@
 
 .p_Desktop {
    position: relative;
-   height: 100%;
+   height: calc(100% - 32px);
    width: 100%;
 
    &_background {

@@ -9,6 +9,7 @@ export type WindowProps = {
   controls?: ControlType[]
   controlHandlers?: Record<ControlType, () => void>
   className?: string
+  onDragStart?: (e: React.MouseEvent) => void
 }
 
 const Window: FC<WindowProps> = ({
@@ -18,6 +19,7 @@ const Window: FC<WindowProps> = ({
   controls,
   controlHandlers,
   className = '',
+  onDragStart,
 }) => {
   const componentsClass = 'o_Window'
 
@@ -30,6 +32,7 @@ const Window: FC<WindowProps> = ({
         icon={icon}
         controls={controls ?? defaultControls}
         controlHandlers={controlHandlers}
+        onMouseDown={onDragStart}
       />
       <div className={`${componentsClass}_content`}>{children}</div>
     </div>
