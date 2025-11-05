@@ -13,6 +13,7 @@ export type OpenWindow = {
   id: string
   contentKey: string
   title: string
+  icon: string
   x: number
   y: number
   zIndex: number
@@ -26,7 +27,10 @@ type WindowsState = {
 }
 
 type WindowsAction =
-  | { type: 'OPEN_WINDOW'; payload: { contentKey: string; title: string } }
+  | {
+      type: 'OPEN_WINDOW'
+      payload: { contentKey: string; title: string; icon: string }
+    }
   | { type: 'CLOSE_WINDOW'; payload: { id: string } }
   | { type: 'MINIMIZE_WINDOW'; payload: { id: string } }
   | { type: 'RESTORE_WINDOW'; payload: { id: string } }
@@ -35,7 +39,7 @@ type WindowsAction =
 
 const WindowsContext = createContext<{
   openWindows: OpenWindow[]
-  openWindow: (contentKey: string, title: string) => void
+  openWindow: (contentKey: string, title: string, icon: string) => void
   closeWindow: (id: string) => void
   minimizeWindow: (id: string) => void
   restoreWindow: (id: string) => void
@@ -59,6 +63,7 @@ function windowsReducer(
         id,
         contentKey: action.payload.contentKey,
         title: action.payload.title,
+        icon: action.payload.icon,
         x: 100 + state.openWindows.length * 20,
         y: 100 + state.openWindows.length * 20,
         zIndex: state.zCounter + 1,
@@ -132,8 +137,8 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(windowsReducer, initialState)
 
   const openWindow = useCallback(
-    (contentKey: string, title: string) =>
-      dispatch({ type: 'OPEN_WINDOW', payload: { contentKey, title } }),
+    (contentKey: string, title: string, icon: string) =>
+      dispatch({ type: 'OPEN_WINDOW', payload: { contentKey, title, icon } }),
     []
   )
   const closeWindow = useCallback(

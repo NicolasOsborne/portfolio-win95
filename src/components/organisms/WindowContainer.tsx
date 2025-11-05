@@ -38,12 +38,15 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
     [ControlType.HELP]: () => undefined,
   }
 
+  const childClass = 'o_Window'
+
   return (
     <Window
       title={windowData.title}
+      icon={windowData.icon}
       controls={[ControlType.MINIMIZE, ControlType.MAXIMIZE, ControlType.CLOSE]}
       controlHandlers={controlHandlers}
-      className='o_Window__desktop'
+      className={`${childClass}_desktop`}
     >
       {getContent(windowData.contentKey)}
     </Window>

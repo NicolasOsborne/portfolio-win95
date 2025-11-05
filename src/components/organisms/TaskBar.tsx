@@ -56,7 +56,7 @@ const TaskBar: FC<TaskBarProps> = ({ list }) => {
             const entry = content.desktop.menu.list.find(
               (e) => e.contentKey === key
             )
-            if (entry) openWindow(entry.contentKey, entry.label)
+            if (entry) openWindow(entry.contentKey, entry.label, entry.icon)
             setIsMenuOpen(false)
           }}
         />

@@ -4,6 +4,7 @@ import ControlType from '@/enums/ControlType'
 
 export type WindowProps = {
   title: string
+  icon: string
   children: ReactNode
   controls?: ControlType[]
   controlHandlers?: Record<ControlType, () => void>
@@ -12,6 +13,7 @@ export type WindowProps = {
 
 const Window: FC<WindowProps> = ({
   title,
+  icon,
   children,
   controls,
   controlHandlers,
@@ -25,6 +27,7 @@ const Window: FC<WindowProps> = ({
     <div className={`${componentsClass} ${className}`}>
       <TitleBar
         title={title}
+        icon={icon}
         controls={controls ?? defaultControls}
         controlHandlers={controlHandlers}
       />

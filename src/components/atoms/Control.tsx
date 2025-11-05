@@ -22,8 +22,8 @@ const Control: FC<ControlProps> = ({ type, onClick }) => {
       <Image
         src={icons[type]}
         alt={type}
-        width={6}
-        height={9}
+        width={type === ControlType.HELP ? 6 : 8}
+        height={type === ControlType.HELP ? 9 : 8}
         draggable={false}
       />
     </button>
