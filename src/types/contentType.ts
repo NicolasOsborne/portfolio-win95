@@ -59,6 +59,8 @@ export type Project = {
   realizations: string[]
   websiteLink?: string
   githubLink?: string
+  websiteLabel?: string
+  githubLabel?: string
 }
 
 export type ProjectsContent = {

@@ -167,6 +167,7 @@ export const contentFr: Content = {
           'Indexation des pages pour les moteurs de recherche.Indexation des pages pour les moteurs de recherche.',
         ],
         websiteLink: 'https://www.vetipole.vet/',
+        websiteLabel: 'Voir le site',
       },
       {
         id: 'ethereal',
@@ -195,6 +196,7 @@ export const contentFr: Content = {
           'Création des fiches artistes et mise à jour de la programmation du festival chaque année.',
         ],
         websiteLink: 'https://etherealdecibel.com/',
+        websiteLabel: 'Voir le site',
       },
       {
         id: 'extellient',
@@ -214,6 +216,7 @@ export const contentFr: Content = {
           'Mise en place du référencement naturel et SEO.',
         ],
         websiteLink: 'https://www.extellient.com/',
+        websiteLabel: 'Voir le site',
       },
       {
         id: 'dock14',
@@ -235,6 +238,7 @@ export const contentFr: Content = {
           'Maîtrise du plugin Yoast pour WordPress.',
         ],
         websiteLink: 'https://dock14.fr/',
+        websiteLabel: 'Voir le site',
       },
       {
         id: 'portfolio',
@@ -266,6 +270,8 @@ export const contentFr: Content = {
         ],
         websiteLink: 'https://nicoo-portfolio.vercel.app/',
         githubLink: 'https://github.com/NicolasOsborne/portfolio',
+        websiteLabel: 'Voir le site',
+        githubLabel: 'Voir le code',
       },
     ],
   },
