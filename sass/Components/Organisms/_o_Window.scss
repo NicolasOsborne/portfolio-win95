@@ -20,7 +20,7 @@
 
    &_desktop {
       position: absolute;
-      width: 450px;
       z-index: 20;
+      min-width: 450px;
    }
 }

@@ -1,0 +1,82 @@
+@use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/typography';
+@use '../../Tools/mixins';
+
+.t_ContactWindow {
+   &_window {
+      @include mixins.border-flat;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+   }
+
+   &_form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+   }
+
+   &_content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+   }
+
+   &_title {
+      @include typography.body;
+   }
+
+   &_fields {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+   }
+
+   &_row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      width: 100%;
+   }
+
+   &_label {
+      @include typography.body-bold;
+   }
+
+   &_input {
+      @include mixins.border-input;
+      width: 85%;
+   }
+
+   &_buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      width: 100%;
+      justify-content: flex-end;
+      align-items: flex-end;
+   }
+
+   &_message-error,
+   &_message-success {
+      @include typography.body-bold;
+   }
+
+   &_message-error {
+      color: red;
+   }
+
+   &_message-success {
+      color: green;
+   }
+}

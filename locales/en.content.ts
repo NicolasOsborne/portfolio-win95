@@ -165,6 +165,7 @@ export const contentEn: Content = {
           'Page indexing for search engines.Page indexing for search engines.',
         ],
         websiteLink: 'https://www.vetipole.vet/',
+        websiteLabel: 'Visit the website',
       },
       {
         id: 'ethereal',
@@ -193,6 +194,7 @@ export const contentEn: Content = {
           'Creation of artist profiles and updating the festival lineup each year.',
         ],
         websiteLink: 'https://etherealdecibel.com/',
+        websiteLabel: 'Visit the website',
       },
       {
         id: 'extellient',
@@ -212,6 +214,7 @@ export const contentEn: Content = {
           'Implementation of natural referencing and SEO.',
         ],
         websiteLink: 'https://www.extellient.com/',
+        websiteLabel: 'Visit the website',
       },
       {
         id: 'dock14',
@@ -233,6 +236,7 @@ export const contentEn: Content = {
           'Mastery of the Yoast plugin for WordPress.',
         ],
         websiteLink: 'https://dock14.fr/',
+        websiteLabel: 'Visit the website',
       },
       {
         id: 'portfolio',
@@ -264,6 +268,8 @@ export const contentEn: Content = {
         ],
         websiteLink: 'https://nicoo-portfolio.vercel.app/',
         githubLink: 'https://github.com/NicolasOsborne/portfolio',
+        websiteLabel: 'Visit the website',
+        githubLabel: 'See the code',
       },
     ],
   },
@@ -301,7 +307,7 @@ export const contentEn: Content = {
       },
       {
         id: 'wordpress',
-        title: 'WordPress Integration & Webdesign',
+        title: 'WordPress & Webdesign',
         subtitle: 'Volunteering',
         description: [
           'Since 2022, I have learned to master the WordPress CMS, and I regularly put this mastery at the service of local associations and businesses to assist them in the creation, integration, maintenance, hosting, and referencing of their websites.',
@@ -311,8 +317,8 @@ export const contentEn: Content = {
       },
       {
         id: 'autoformation',
-        title: 'Codecademy / OpenClassrooms / Sololearn / Grafikart',
-        subtitle: 'Self-Training',
+        title: 'Self-Training',
+        subtitle: 'Codecademy / OpenClassrooms / Sololearn / Grafikart',
         description: [
           'Having started in the web universe by creating WordPress sites, and eager to learn more, I self-trained in HTML, CSS, JavaScript, PHP, and Java languages via platforms like Codecademy, Sololearn, OpenClassrooms, and Grafikart. Plunged into this infinite ocean of new knowledge, I felt like a fish in water, and I loved every moment! It was the beginning of a new vocation.',
         ],
@@ -321,7 +327,7 @@ export const contentEn: Content = {
       },
       {
         id: 'iga',
-        title: 'Alpine Geography Institute',
+        title: 'IGA',
         subtitle: 'Master in Environmental Geography, Geomatics, and GIS',
         description: [
           "Before turning to the web universe, I obtained a Master's degree in Geography, Territorial Planning, and Geomatics in 2016, after studying in Grenoble and Berlin. During my Bachelor's degree, I focused on sustainable development and urban agriculture. In my Master's, I studied natural risks, hydrosystems, biodiversity, and acquired skills in remote sensing, SQL, QGIS, ArcGIS, Python, and R.",
@@ -331,5 +337,22 @@ export const contentEn: Content = {
         endDate: '2011',
       },
     ],
+  },
+  contact: {
+    title: 'Contact me!',
+    name: {
+      label: 'Name',
+      placeholder: 'Your name',
+    },
+    email: {
+      label: 'Email',
+      placeholder: 'Your email address',
+    },
+    message: {
+      label: 'Message',
+      placeholder: 'Your message',
+    },
+    submit: 'Send',
+    cancel: 'Cancel',
   },
 }

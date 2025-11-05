@@ -59,6 +59,8 @@ export type Project = {
   realizations: string[]
   websiteLink?: string
   githubLink?: string
+  websiteLabel?: string
+  githubLabel?: string
 }
 
 export type ProjectsContent = {
@@ -80,6 +82,20 @@ export type ExperienceContent = {
   list: Experience[]
 }
 
+export type Contact = {
+  label: string
+  placeholder: string
+}
+
+export type ContactContent = {
+  title: string
+  name: Contact
+  email: Contact
+  message: Contact
+  submit: string
+  cancel: string
+}
+
 export type Content = {
   login: LoginContent
   desktop: DesktopContent
@@ -87,4 +103,5 @@ export type Content = {
   skills: SkillsContent
   projects: ProjectsContent
   experience: ExperienceContent
+  contact: ContactContent
 }
