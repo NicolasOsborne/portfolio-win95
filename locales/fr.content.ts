@@ -303,7 +303,7 @@ export const contentFr: Content = {
       },
       {
         id: 'wordpress',
-        title: 'Intégration WordPress & Webdesign',
+        title: 'WordPress & Webdesign',
         subtitle: 'Bénévolat',
         description: [
           "Depuis 2022, j'ai appris à maîtriser le CMS WordPress, et je mets régulièrement cette maîtrise au service d'associations et d'entreprises locales pour les accompagner dans la création, l'intégration, la maintenance, l'hébergement et le référencement de leurs sites web.",
@@ -313,8 +313,8 @@ export const contentFr: Content = {
       },
       {
         id: 'autoformation',
-        title: 'Codecademy / OpenClassrooms / Sololearn / Grafikart',
-        subtitle: 'Auto-formation',
+        title: 'Auto-formation',
+        subtitle: 'Codecademy / OpenClassrooms / Sololearn / Grafikart',
         description: [
           "Ayant débuté dans l'univers du web en créant des sites WordPress, et désireux d'en apprendre plus, je me suis formé en autodidacte aux langages HTML, CSS, JavaScript, PHP et Java via des plateformes comme Codecademy, Sololearn, OpenClassrooms et Grafikart. Plongé dans cet océan infini de nouvelles connaissances, je me suis senti comme un poisson dans l'eau, et j'ai adoré chaque instant ! C'était le début d'une nouvelle vocation.",
         ],
@@ -323,7 +323,7 @@ export const contentFr: Content = {
       },
       {
         id: 'iga',
-        title: 'Institut de Géographie Alpine',
+        title: 'IGA',
         subtitle: 'Master en Géographie Environnementale, Géomatique et SIG',
         description: [
           "Avant de me tourner vers l'univers du web, j'ai obtenu un Master en Géographie, Aménagement du Territoire et Géomatique en 2016, après des études à Grenoble et Berlin. Pendant ma Licence, je me suis concentré sur le développement durable et l'agriculture urbaine. En Master, j'ai étudié les risques naturels, les hydrosystèmes, la biodiversité et acquis des compétences en télédétection, SQL, QGIS, ArcGIS, Python et R.",

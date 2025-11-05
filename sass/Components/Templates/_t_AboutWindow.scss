@@ -11,11 +11,12 @@
    @include mixins.border-flat;
    box-sizing: border-box;
    padding: 2px;
+   width: fit-content;
 
    &_notepad {
       flex: 1;
-      background-color: white;
-      color: black;
+      background-color: $color-white;
+      color: $text-color;
       font-size: 14px;
       padding: 8px;
       overflow: auto;

@@ -1,7 +1,8 @@
 @use '../../Settings/variables' as *;
 @use '../../Tools/mixins';
+@use '../../Tools/typography';
 
-.t_SkillsWindow {
+.t_ExperiencesWindow {
    display: flex;
    flex-direction: column;
    height: 100%;
@@ -9,6 +10,17 @@
    @include mixins.border-flat;
    padding: 4px;
    box-sizing: border-box;
+   width: fit-content;
+
+   &_title,
+   &_dates {
+      @include typography.body-bold;
+      margin-bottom: 6px;
+   }
+
+   &_description {
+      line-height: 1.4;
+   }
 
    &_content {
       flex: 1;

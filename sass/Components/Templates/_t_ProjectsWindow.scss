@@ -1,0 +1,57 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.t_ProjectsWindow {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   background-color: $window-face;
+   @include mixins.border-flat;
+   padding: 4px;
+   box-sizing: border-box;
+
+   &_content {
+      flex: 1;
+      background-color: $color-white;
+      border: 2px inset $color-grey-verylight;
+      overflow-y: auto;
+      padding: 8px;
+      margin-top: 4px;
+   }
+
+   &_title {
+      @include typography.body-bold;
+      margin-bottom: 6px;
+   }
+
+   &_shortDescription {
+      @include typography.body-bold;
+      font-style: italic;
+      margin-bottom: 8px;
+   }
+
+   &_longDescription {
+      line-height: 1.4;
+      margin-bottom: 8px;
+   }
+
+   &_technologies {
+      @include typography.body;
+      margin-top: 16px;
+      margin-bottom: 16px;
+   }
+
+   &_realizations {
+      margin-top: 8px;
+
+      ul {
+         padding-left: 20px;
+         list-style-type: disc;
+
+         li {
+            margin-bottom: 8px;
+         }
+      }
+   }
+}
