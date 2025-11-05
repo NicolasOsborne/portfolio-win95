@@ -1,0 +1,19 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.m_Menu {
+   position: absolute;
+   bottom: 28px;
+
+   &_list {
+      @include mixins.border-window;
+
+      background-color: $window-face;
+      padding: 2px;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+   }
+}

@@ -15,11 +15,12 @@ export type TaskBarProps = {
 }
 
 const TaskBar: FC<TaskBarProps> = ({ list }) => {
-  const componentsClass = 'o_TaskBar'
   const currentLocale = useCurrentLocale()
   const { content } = useContent()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const componentsClass = 'o_TaskBar'
 
   return (
     <div className={componentsClass}>
@@ -31,7 +32,7 @@ const TaskBar: FC<TaskBarProps> = ({ list }) => {
       >
         <Image
           src={Start}
-          alt='Start'
+          alt={content.desktop.menu.title}
           width={20}
           height={20}
           draggable={false}

@@ -1,33 +1,35 @@
-// Menu.tsx
 import { FC } from 'react'
 import Image from 'next/image'
-import { MenuEntry } from '@/types/contentType'
+import MenuItem, { MenuEntry } from '../atoms/MenuItem'
 
-type MenuProps = {
+import Logout from '@/../public/assets/win95/icons/menu/shutdown.svg'
+
+export type MenuProps = {
   entries: MenuEntry[]
   logoutLabel: string
+  onItemClick?: (contentKey: string) => void
+  onLogout?: () => void
 }
 
-const Menu: FC<MenuProps> = ({ entries, logoutLabel }) => {
-  return (
-    <div className='o_Menu'>
-      <ul className='o_Menu_list'>
-        {entries.map((entry) => (
-          <li key={entry.id} className='o_Menu_item'>
-            <Image src={entry.icon} alt={entry.label} width={18} height={18} />
-            <span>{entry.label}</span>
-          </li>
-        ))}
-      </ul>
+const Menu: FC<MenuProps> = (props) => {
+  const { entries, logoutLabel, onItemClick, onLogout } = props
 
-      <div className='o_Menu_logout'>
-        <Image
-          src='/assets/win95/icons/menu/logout.svg'
-          alt='logout'
-          width={18}
-          height={18}
-        />
-        <span>{logoutLabel}</span>
+  const componentClass = 'm_Menu'
+  const childClass = 'a_MenuItem'
+
+  return (
+    <div className={componentClass}>
+      <div className={`${componentClass}_list`}>
+        {entries.map((entry) => (
+          <MenuItem key={entry.id} entry={entry} onClick={onItemClick} />
+        ))}
+        <button
+          className={`${childClass} ${childClass}_logout`}
+          onClick={onLogout}
+        >
+          <Image src={Logout} alt={logoutLabel} width={32} height={32} />
+          <span className={`${childClass}_label`}>{logoutLabel}</span>
+        </button>
       </div>
     </div>
   )

@@ -10,14 +10,13 @@ import { useContent } from '@/context/ContentContext'
 const LoginForm: FC = () => {
   const { login } = useAuth()
   const { content } = useContent()
-  // const { login: loginContent } = content
-
-  const componentsClass = 'o_LoginForm'
 
   const [username, setUsername] = useState('visitor')
   const [password, setPassword] = useState('password')
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+
+  const componentsClass = 'o_LoginForm'
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
