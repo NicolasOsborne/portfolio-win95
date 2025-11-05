@@ -26,6 +26,8 @@
 // Molecules
 @use 'Components/Molecules/m_Controls';
 @use 'Components/Molecules/m_Menu';
+@use 'Components/Molecules/m_SkillsChecklist';
+@use 'Components/Molecules/m_Tabs';
 @use 'Components/Molecules/m_TaskList';
 @use 'Components/Molecules/m_TitleBar';
 
@@ -40,3 +42,4 @@
 
 // Templates
 @use 'Components/Templates/t_AboutWindow';
+@use 'Components/Templates/t_SkillsWindow';

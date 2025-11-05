@@ -68,7 +68,7 @@ export const contentFr: Content = {
   skills: {
     title: 'Les différentes langues que je pratique',
     devSkills: {
-      subtitle: 'Quand je parle avec les ordinateurs :',
+      subtitle: 'Langages',
       list: [
         'HTML',
         'CSS',
@@ -85,14 +85,14 @@ export const contentFr: Content = {
       ],
     },
     languageSkills: {
-      subtitle: 'Quand je parle avec vous :',
+      subtitle: 'Langues',
       list: [
         'Anglais (Ma langue maternelle)',
         'Français (Mon autre langue maternelle)',
       ],
     },
     toolSkills: {
-      subtitle: 'Mes outils',
+      subtitle: 'Outils',
       list: [
         'Figma',
         'GitHub',
@@ -106,7 +106,7 @@ export const contentFr: Content = {
       ],
     },
     softSkills: {
-      subtitle: 'Mes compétences',
+      subtitle: 'Compétences',
       list: [
         'Développement Front-End',
         'Intégration Web',
@@ -125,7 +125,7 @@ export const contentFr: Content = {
       ],
     },
     otherSkills: {
-      subtitle: "Mais avant ça, j'ai eu d'autres vies",
+      subtitle: 'Parcours',
       list: [
         'Brasseur',
         'Pub Manager',

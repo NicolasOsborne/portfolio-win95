@@ -1,0 +1,21 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
+
+.t_SkillsWindow {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   background-color: $window-face;
+   @include mixins.border-flat;
+   padding: 4px;
+   box-sizing: border-box;
+
+   &_content {
+      flex: 1;
+      background-color: white;
+      border: 2px inset #dfdfdf;
+      overflow-y: auto;
+      padding: 8px;
+      margin-top: 4px;
+   }
+}
