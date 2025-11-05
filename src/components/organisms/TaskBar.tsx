@@ -11,6 +11,7 @@ import Menu from '../molecules/Menu'
 import { useContent } from '@/context/ContentContext'
 import { useAuth } from '@/context/AuthContext'
 import { useWindows } from '@/context/WindowContext'
+import TaskList from '../molecules/TaskList'
 
 export type TaskBarProps = {
   list?: { label: string; path: string }[]
@@ -62,7 +63,9 @@ const TaskBar: FC<TaskBarProps> = ({ list }) => {
         />
       )}
 
-      <div className={`${componentsClass}_tasks`}>{/* task buttons */}</div>
+      <div className={`${componentsClass}_tasks`}>
+        <TaskList />
+      </div>
 
       <div className={`${componentsClass}_right`}>
         <LocaleSwitch currentLocale={currentLocale} />

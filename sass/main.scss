@@ -21,10 +21,12 @@
 @use 'Components/Atoms/a_Control.scss';
 @use 'Components/Atoms/a_LocaleSwitch';
 @use 'Components/Atoms/a_MenuItem';
+@use 'Components/Atoms/a_TaskItem';
 
 // Molecules
 @use 'Components/Molecules/m_Controls';
 @use 'Components/Molecules/m_Menu';
+@use 'Components/Molecules/m_TaskList';
 @use 'Components/Molecules/m_TitleBar';
 
 // Organisms
