@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Start from '@/../public/assets/win95/icons/menu/start.svg'
 import LocaleSwitch from '../atoms/LocaleSwitch'
 import Clock from '../atoms/Clock'
-import { useCurrentLocale } from '@/hooks/useCurrentLocale'
 import Menu from '../molecules/Menu'
 import { useContent } from '@/context/ContentContext'
 import { useAuth } from '@/context/AuthContext'
@@ -14,7 +13,6 @@ import { useWindows } from '@/context/WindowContext'
 import TaskList from '../molecules/TaskList'
 
 const TaskBar: FC = () => {
-  const currentLocale = useCurrentLocale()
   const { content } = useContent()
   const { logout } = useAuth()
   const { openWindow } = useWindows()
@@ -64,8 +62,8 @@ const TaskBar: FC = () => {
       </div>
 
       <div className={`${componentsClass}_right`}>
-        <LocaleSwitch currentLocale={currentLocale} />
-        <Clock locale={currentLocale} />
+        <LocaleSwitch />
+        <Clock />
       </div>
     </div>
   )

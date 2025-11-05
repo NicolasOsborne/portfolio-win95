@@ -43,6 +43,7 @@ const LoginForm: FC = () => {
         title={content.login.title}
         icon={content.login.icon}
         controls={[ControlType.HELP]}
+        isFocused={true}
       >
         <div className={`${componentsClass}_window`}>
           <form onSubmit={handleLogin} className={`${componentsClass}_form`}>

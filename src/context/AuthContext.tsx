@@ -10,10 +10,8 @@ import {
   FC,
   ReactNode,
 } from 'react'
-import { useRouter } from 'next/navigation'
 import jwt from 'jsonwebtoken'
 import { User } from '@/types/userType'
-import { useContent } from './ContentContext'
 
 type AuthContextType = {
   isAuthenticated: boolean
@@ -23,19 +21,15 @@ type AuthContextType = {
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
+const TOKEN_KEY = 'jwt_token'
 
 type AuthProviderProps = {
   children: ReactNode
-  initialSlug?: string
 }
 
-const TOKEN_KEY = 'jwt_token'
-
-const AuthProvider: FC<AuthProviderProps> = ({ children, initialSlug }) => {
-  const router = useRouter()
+const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null)
   const [isReady, setIsReady] = useState(false)
-  const { locale } = useContent()
 
   useEffect(() => {
     const token = localStorage.getItem(TOKEN_KEY)
@@ -57,65 +51,38 @@ const AuthProvider: FC<AuthProviderProps> = ({ children, initialSlug }) => {
     setIsReady(true)
   }, [])
 
-  useEffect(() => {
-    if (!isReady) return
-
-    const protectedSlugs = ['desktop']
-    const loginSlugs = ['login']
-
-    if (!initialSlug) {
-      router.replace(`/${locale}/${user ? 'desktop' : 'login'}`)
-      return
-    }
-
-    if (!user && protectedSlugs.includes(initialSlug)) {
-      router.replace(`/${locale}/login`)
-    }
-
-    if (user && loginSlugs.includes(initialSlug)) {
-      router.replace(`/${locale}/desktop`)
-    }
-  }, [user, initialSlug, locale, router, isReady])
-
-  const login = useCallback(
-    async (username: string, password: string): Promise<boolean> => {
-      try {
-        const res = await fetch('/api/auth/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password }),
-        })
-
-        const data = await res.json()
-
-        if (res.ok && data.success && data.token) {
-          localStorage.setItem(TOKEN_KEY, data.token)
-          const decoded = jwt.decode(data.token) as jwt.JwtPayload | null
-          if (decoded?.username && decoded?.sub) {
-            setUser({
-              id: decoded.sub,
-              username: decoded.username,
-            })
-          }
-          router.replace(`/${locale}/desktop`)
-          return true
+  const login = useCallback(async (username: string, password: string) => {
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      })
+      const data = await res.json()
+      if (res.ok && data.success && data.token) {
+        localStorage.setItem(TOKEN_KEY, data.token)
+        const decoded = jwt.decode(data.token) as jwt.JwtPayload | null
+        if (decoded?.username && decoded?.sub) {
+          setUser({
+            id: decoded.sub,
+            username: decoded.username,
+          })
         }
-        return false
-      } catch (err) {
-        console.error('Login failed', err)
-        return false
+        return true
       }
-    },
-    [router, locale]
-  )
+      return false
+    } catch (err) {
+      console.error('Login failed', err)
+      return false
+    }
+  }, [])
 
   const logout = useCallback(() => {
     localStorage.removeItem(TOKEN_KEY)
     setUser(null)
-    router.replace(`/${locale}/login`)
-  }, [router, locale])
+  }, [])
 
-  const contextValue = useMemo(
+  const value = useMemo(
     () => ({
       isAuthenticated: !!user,
       user,
@@ -127,9 +94,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children, initialSlug }) => {
 
   if (!isReady) return null
 
-  return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
 export default AuthProvider

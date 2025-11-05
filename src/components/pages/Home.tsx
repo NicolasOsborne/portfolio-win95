@@ -10,7 +10,6 @@ import { Content, Locale } from '@/types/contentType'
 type HomePageProps = {
   serverContent: Content
   initialLocale: Locale
-  currentSlug?: string
 }
 
 const AppContent: FC = () => {
@@ -23,17 +22,13 @@ const AppContent: FC = () => {
   )
 }
 
-const Home: FC<HomePageProps> = ({
-  serverContent,
-  initialLocale,
-  currentSlug,
-}) => {
+const Home: FC<HomePageProps> = ({ serverContent, initialLocale }) => {
   return (
     <ContentProvider
       initialContent={serverContent}
       initialLocale={initialLocale}
     >
-      <AuthProvider initialSlug={currentSlug}>
+      <AuthProvider>
         <AppContent />
       </AuthProvider>
     </ContentProvider>
