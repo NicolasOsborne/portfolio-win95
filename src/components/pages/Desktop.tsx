@@ -8,7 +8,7 @@ import WindowContainer from '../organisms/WindowContainer'
 
 export const pageSlug = 'desktop'
 
-const DesktopInner = () => {
+const DesktopInner: FC = () => {
   const { openWindows } = useWindows()
 
   const componentsClass = 'p_Desktop'
@@ -25,7 +25,7 @@ const DesktopInner = () => {
   )
 }
 
-const Desktop = () => (
+const Desktop: FC = () => (
   <WindowsProvider>
     <DesktopInner />
   </WindowsProvider>

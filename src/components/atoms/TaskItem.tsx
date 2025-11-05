@@ -14,10 +14,11 @@ const TaskItem: FC<TaskItemProps> = ({ windowData, isFocused, onClick }) => {
 
   return (
     <button
+      data-window-id={windowData.id}
       type='button'
       disabled={false}
       className={classNames(componentsClass, {
-        [`${componentsClass}_focused`]: isFocused,
+        [`${componentsClass}_focused`]: isFocused && !windowData.minimized,
       })}
       onClick={onClick}
       title={windowData.title}

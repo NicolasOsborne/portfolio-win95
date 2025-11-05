@@ -13,11 +13,7 @@ import { useAuth } from '@/context/AuthContext'
 import { useWindows } from '@/context/WindowContext'
 import TaskList from '../molecules/TaskList'
 
-export type TaskBarProps = {
-  list?: { label: string; path: string }[]
-}
-
-const TaskBar: FC<TaskBarProps> = ({ list }) => {
+const TaskBar: FC = () => {
   const currentLocale = useCurrentLocale()
   const { content } = useContent()
   const { logout } = useAuth()
