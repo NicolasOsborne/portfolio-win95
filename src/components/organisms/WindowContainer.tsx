@@ -18,7 +18,6 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
     moveWindow,
   } = useWindows()
 
-  const [dragging, setDragging] = useState(false)
   const draggingRef = useRef(false)
   const dragOffset = useRef({ x: 0, y: 0 })
 
@@ -101,6 +100,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
         controlHandlers={controlHandlers}
         className={`${childClass}_desktop`}
         onDragStart={handleMouseDown}
+        isFocused={windowData.isFocused}
       >
         {getContent(windowData.contentKey)}
       </Window>

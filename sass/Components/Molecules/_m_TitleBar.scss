@@ -19,6 +19,10 @@
       cursor: grabbing;
    }
 
+   &_unfocus {
+      background: linear-gradient(90deg, $color-grey-dark, $color-grey);
+   }
+
    &_title {
       color: $color-white;
       font-weight: bold;
