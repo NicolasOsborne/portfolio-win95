@@ -2,7 +2,7 @@
 
 import { FC, useState } from 'react'
 import Button from '@/components/atoms/Button'
-import Window from '@/components/organisms/Window'
+import Window from '@/components/molecules/Window'
 import { useAuth } from '@/context/AuthContext'
 import ControlType from '@/enums/ControlType'
 import { useContent } from '@/context/ContentContext'

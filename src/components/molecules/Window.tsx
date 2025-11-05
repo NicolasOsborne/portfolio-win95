@@ -6,6 +6,7 @@ export type WindowProps = {
   title: string
   children: ReactNode
   controls?: ControlType[]
+  controlHandlers?: Record<ControlType, () => void>
   className?: string
 }
 
@@ -13,6 +14,7 @@ const Window: FC<WindowProps> = ({
   title,
   children,
   controls,
+  controlHandlers,
   className = '',
 }) => {
   const componentsClass = 'o_Window'
@@ -21,7 +23,11 @@ const Window: FC<WindowProps> = ({
 
   return (
     <div className={`${componentsClass} ${className}`}>
-      <TitleBar title={title} controls={controls ?? defaultControls} />
+      <TitleBar
+        title={title}
+        controls={controls ?? defaultControls}
+        controlHandlers={controlHandlers}
+      />
       <div className={`${componentsClass}_content`}>{children}</div>
     </div>
   )

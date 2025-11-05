@@ -5,7 +5,6 @@ import {
   useContext,
   useMemo,
   useState,
-  useEffect,
   FC,
   ReactNode,
 } from 'react'

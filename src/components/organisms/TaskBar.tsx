@@ -10,6 +10,7 @@ import { useCurrentLocale } from '@/hooks/useCurrentLocale'
 import Menu from '../molecules/Menu'
 import { useContent } from '@/context/ContentContext'
 import { useAuth } from '@/context/AuthContext'
+import { useWindows } from '@/context/WindowContext'
 
 export type TaskBarProps = {
   list?: { label: string; path: string }[]
@@ -19,6 +20,7 @@ const TaskBar: FC<TaskBarProps> = ({ list }) => {
   const currentLocale = useCurrentLocale()
   const { content } = useContent()
   const { logout } = useAuth()
+  const { openWindow } = useWindows()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -49,6 +51,13 @@ const TaskBar: FC<TaskBarProps> = ({ list }) => {
           onLogout={() => {
             setIsMenuOpen(false)
             logout()
+          }}
+          onItemClick={(key) => {
+            const entry = content.desktop.menu.list.find(
+              (e) => e.contentKey === key
+            )
+            if (entry) openWindow(entry.contentKey, entry.label)
+            setIsMenuOpen(false)
           }}
         />
       )}
