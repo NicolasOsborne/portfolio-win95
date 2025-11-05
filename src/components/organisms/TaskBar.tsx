@@ -9,6 +9,7 @@ import Clock from '../atoms/Clock'
 import { useCurrentLocale } from '@/hooks/useCurrentLocale'
 import Menu from '../molecules/Menu'
 import { useContent } from '@/context/ContentContext'
+import { useAuth } from '@/context/AuthContext'
 
 export type TaskBarProps = {
   list?: { label: string; path: string }[]
@@ -17,6 +18,7 @@ export type TaskBarProps = {
 const TaskBar: FC<TaskBarProps> = ({ list }) => {
   const currentLocale = useCurrentLocale()
   const { content } = useContent()
+  const { logout } = useAuth()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -44,6 +46,10 @@ const TaskBar: FC<TaskBarProps> = ({ list }) => {
         <Menu
           entries={content.desktop.menu.list}
           logoutLabel={content.desktop.logout}
+          onLogout={() => {
+            setIsMenuOpen(false)
+            logout()
+          }}
         />
       )}
 
