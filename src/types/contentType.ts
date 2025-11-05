@@ -2,6 +2,7 @@ export type Locale = 'en' | 'fr'
 
 export type LoginContent = {
   title: string
+  icon: string
   prompt: string
   username: string
   password: string

@@ -3,6 +3,7 @@ import { Content } from '@/types/contentType'
 export const contentFr: Content = {
   login: {
     title: 'Bienvenue sur le Portfolio de Nicoo',
+    icon: '/assets/win95/icons/menu/keys.svg',
     prompt:
       "Saisissez votre nom d'utilisteur et votre mot de passe pour vous connecter au système.",
     username: 'Username :',

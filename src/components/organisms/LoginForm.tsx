@@ -39,7 +39,11 @@ const LoginForm: FC = () => {
 
   return (
     <div className={componentsClass}>
-      <Window title={content.login.title} controls={[ControlType.HELP]}>
+      <Window
+        title={content.login.title}
+        icon={content.login.icon}
+        controls={[ControlType.HELP]}
+      >
         <div className={`${componentsClass}_window`}>
           <div className={`${componentsClass}_icon`}></div>
           <form onSubmit={handleLogin} className={`${componentsClass}_form`}>
