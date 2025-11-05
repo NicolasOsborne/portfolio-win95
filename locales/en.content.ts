@@ -332,4 +332,21 @@ export const contentEn: Content = {
       },
     ],
   },
+  contact: {
+    title: 'Contact me!',
+    name: {
+      label: 'Name',
+      placeholder: 'Your name',
+    },
+    email: {
+      label: 'Email',
+      placeholder: 'Your email address',
+    },
+    message: {
+      label: 'Message',
+      placeholder: 'Your message',
+    },
+    submit: 'Send',
+    cancel: 'Cancel',
+  },
 }
