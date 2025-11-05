@@ -1,16 +1,16 @@
 'use client'
 
 import { FC } from 'react'
-import LoginForm, { LoginFormProps } from '@/components/organisms/LoginForm'
+import LoginForm from '@/components/organisms/LoginForm'
 
-export type LoginProps = LoginFormProps
+export const pageSlug = 'login'
 
-const Login: FC<LoginProps> = (props) => {
+const Login: FC = () => {
   const componentsClass = 'p_Login'
 
   return (
     <div className={componentsClass}>
-      <LoginForm onLoginSuccess={props.onLoginSuccess} />
+      <LoginForm />
     </div>
   )
 }

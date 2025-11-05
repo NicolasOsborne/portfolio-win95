@@ -1,0 +1,27 @@
+@use '../../Settings/variables' as *;
+
+.m_Tabs {
+   display: flex;
+   gap: 2px;
+
+   &_tab {
+      background-color: $button-face;
+      border: 2px solid #c0c0c0;
+      border-top-color: #f0f0f0;
+      border-left-color: #f0f0f0;
+      padding: 2px 8px;
+      font-family: 'MS Sans Serif', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+
+      &:active,
+      &.active,
+      &-active {
+         border-top-color: #808080;
+         border-left-color: #808080;
+         border-bottom-color: #f0f0f0;
+         border-right-color: #f0f0f0;
+         background-color: #dcdcdc;
+      }
+   }
+}

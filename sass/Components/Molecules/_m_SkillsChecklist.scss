@@ -1,0 +1,31 @@
+@use '../../Settings/variables' as *;
+
+.m_SkillsChecklist {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   font-size: 13px;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 6px 24px;
+
+   &_item {
+      .item {
+         display: flex;
+         align-items: center;
+         gap: 6px;
+         width: 45%;
+         box-sizing: border-box;
+
+         input[type='checkbox'] {
+            accent-color: #008080;
+            width: 14px;
+            height: 14px;
+         }
+
+         label {
+            cursor: default;
+         }
+      }
+   }
+}

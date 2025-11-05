@@ -1,50 +1,71 @@
 'use client'
 
-import { FC, useState, useEffect } from 'react'
+import { FC, useState } from 'react'
+import Button from '../atoms/Button'
+import Image from 'next/image'
+import Start from '@/../public/assets/win95/icons/menu/start.svg'
+import LocaleSwitch from '../atoms/LocaleSwitch'
+import Clock from '../atoms/Clock'
+import { useCurrentLocale } from '@/hooks/useCurrentLocale'
+import Menu from '../molecules/Menu'
+import { useContent } from '@/context/ContentContext'
+import { useAuth } from '@/context/AuthContext'
+import { useWindows } from '@/context/WindowContext'
+import TaskList from '../molecules/TaskList'
 
-export type TaskBarProps = {
-  list?: { label: string; path: string }[]
-}
+const TaskBar: FC = () => {
+  const currentLocale = useCurrentLocale()
+  const { content } = useContent()
+  const { logout } = useAuth()
+  const { openWindow } = useWindows()
 
-const TaskBar: FC<TaskBarProps> = (props) => {
-  const { list } = props
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const componentsClass = 'o_TaskBar'
-  const [time, setTime] = useState(new Date())
-
-  useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000)
-    return () => clearInterval(timer)
-  }, [])
-
-  const formattedTime = time.toLocaleTimeString('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-  const currentLocale = 'EN'
 
   return (
-    <div
-      className={`${componentsClass} fixed bottom-0 left-0 right-0 h-8 bg-[#c0c0c0] border-t-2 border-t-white border-l-white border-r-[#808080] border-b-[#808080] shadow-xl flex items-center justify-between px-1 z-50`}
-    >
-      <div className='flex items-center space-x-2'>
-        <button className='win95-button bg-[#c0c0c0] font-bold h-6 text-sm flex items-center'>
-          <span className='mr-1 text-2xl' style={{ color: '#ff0000' }}>
-            W
-          </span>
-          <span className='mr-1'>i</span>
-          <span className='mr-1'>n</span>
-          <span className='mr-1'>9</span>
-          <span className='mr-1'>5</span>
-        </button>
-        <div className='flex space-x-1'></div>
+    <div className={componentsClass}>
+      <Button
+        type='button'
+        disabled={false}
+        className={`${componentsClass}_start`}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <Image
+          src={Start}
+          alt={content.desktop.menu.title}
+          width={20}
+          height={20}
+          draggable={false}
+        />
+        {content.desktop.menu.title}
+      </Button>
+
+      {isMenuOpen && (
+        <Menu
+          entries={content.desktop.menu.list}
+          logoutLabel={content.desktop.logout}
+          onLogout={() => {
+            setIsMenuOpen(false)
+            logout()
+          }}
+          onItemClick={(key) => {
+            const entry = content.desktop.menu.list.find(
+              (e) => e.contentKey === key
+            )
+            if (entry) openWindow(entry.contentKey, entry.label, entry.icon)
+            setIsMenuOpen(false)
+          }}
+        />
+      )}
+
+      <div className={`${componentsClass}_tasks`}>
+        <TaskList />
       </div>
 
-      <div className='flex items-center h-full'>
-        <div className='win95-window h-full px-2 py-0.5 border-t-[#808080] border-l-[#808080] border-r-white border-b-white text-xs flex items-center space-x-2'>
-          <span className='font-semibold cursor-pointer'>{currentLocale}</span>
-          <span>{formattedTime}</span>
-        </div>
+      <div className={`${componentsClass}_right`}>
+        <LocaleSwitch currentLocale={currentLocale} />
+        <Clock locale={currentLocale} />
       </div>
     </div>
   )

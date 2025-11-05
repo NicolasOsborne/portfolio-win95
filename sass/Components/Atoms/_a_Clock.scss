@@ -1,0 +1,8 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/typography';
+@use '../../Tools/mixins';
+
+.a_Clock {
+   display: inline-block;
+   white-space: nowrap;
+}

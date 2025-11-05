@@ -1,30 +1,10 @@
-'use client'
+import { redirect } from 'next/navigation'
+import { i18nConfig } from '@/utils/i18n/i18n'
 
-import { useState } from 'react'
+const RootPage = () => {
+  const defaultLocale = i18nConfig.defaultLocale
 
-import Desktop from '@/components/pages/Desktop'
-import TaskBar from '@/components/organisms/TaskBar'
-import Login from '@/components/pages/Login'
-
-export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [username, setUsername] = useState('Visitor')
-
-  const handleLoginSuccess = (user: string) => {
-    setUsername(user)
-    setIsLoggedIn(true)
-  }
-
-  return (
-    <main>
-      {isLoggedIn ? (
-        <>
-          <Desktop username={username} />
-          <TaskBar />
-        </>
-      ) : (
-        <Login onLoginSuccess={handleLoginSuccess} />
-      )}
-    </main>
-  )
+  redirect(`/${defaultLocale}`)
 }
+
+export default RootPage

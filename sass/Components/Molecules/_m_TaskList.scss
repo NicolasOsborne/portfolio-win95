@@ -1,0 +1,9 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.m_TaskList {
+   display: flex;
+   flex-direction: row;
+   height: 100%;
+}

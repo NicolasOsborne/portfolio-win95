@@ -1,0 +1,29 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
+
+.a_TaskItem {
+   @include mixins.border-raised;
+   @include typography.body;
+
+   cursor: pointer;
+   background-color: $button-face;
+   color: $text-color;
+   border: none;
+   display: inline-flex;
+   align-items: center;
+   justify-content: flex-start;
+   gap: 6px;
+   padding: 2px 5px;
+   margin-right: 2px;
+   height: 100%;
+   width: 150px;
+
+   &:active,
+   &:focus,
+   &:focus-visible,
+   &_focused {
+      @include mixins.border-sunken;
+      background-color: $color-grey-lightest;
+   }
+}

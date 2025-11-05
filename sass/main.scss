@@ -17,8 +17,18 @@
 // Components
 // Atoms
 @use 'Components/Atoms/a_Button';
+@use 'Components/Atoms/a_Clock';
+@use 'Components/Atoms/a_Control.scss';
+@use 'Components/Atoms/a_LocaleSwitch';
+@use 'Components/Atoms/a_MenuItem';
+@use 'Components/Atoms/a_TaskItem';
 
 // Molecules
+@use 'Components/Molecules/m_Controls';
+@use 'Components/Molecules/m_Menu';
+@use 'Components/Molecules/m_SkillsChecklist';
+@use 'Components/Molecules/m_Tabs';
+@use 'Components/Molecules/m_TaskList';
 @use 'Components/Molecules/m_TitleBar';
 
 // Organisms
@@ -29,3 +39,7 @@
 // Pages
 @use 'Components/Pages/p_Desktop';
 @use 'Components/Pages/p_Login';
+
+// Templates
+@use 'Components/Templates/t_AboutWindow';
+@use 'Components/Templates/t_SkillsWindow';

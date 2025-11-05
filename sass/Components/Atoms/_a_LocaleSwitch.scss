@@ -1,0 +1,33 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/typography';
+@use '../../Tools/mixins';
+
+.a_LocaleSwitch {
+   position: relative;
+
+   &_button {
+      cursor: pointer;
+   }
+
+   &_dropdown {
+      @include mixins.border-window;
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      background-color: $window-face;
+      z-index: 10;
+   }
+
+   &_choice {
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      padding: 4px 10px;
+      text-align: right;
+
+      &:hover {
+         background-color: $color-hover;
+         color: $color-white;
+      }
+   }
+}
