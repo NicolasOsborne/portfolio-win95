@@ -1,5 +1,4 @@
 import bcrypt from 'bcryptjs'
-import { User } from '@/types/userType'
 
 const rawUsers: Array<{ id: string; username: string; password: string }> = [
   { id: 'user_visitor', username: 'visitor', password: 'password' },
@@ -14,9 +13,3 @@ const users: Array<{ id: string; username: string; passwordHash: string }> =
   }))
 
 export default users
-
-export type DemoUser = {
-  id: string
-  username: string
-  passwordHash: string
-}
