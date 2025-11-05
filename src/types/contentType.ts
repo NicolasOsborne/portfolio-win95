@@ -33,6 +33,7 @@ export type AboutContent = {
   title: string
   description: string[]
   cvLink: string
+  cvLabel: string
 }
 
 export type SkillList = {

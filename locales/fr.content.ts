@@ -58,10 +58,12 @@ export const contentFr: Content = {
       "Nico, c'est moi, Développeur Front-End et Intégrateur Web à Grenoble.",
       'Mon métier ? Donner vie à vos designs en les transformant en sites web dynamiques !',
       "Autodidacte en code, je me suis par la suite professionnalisé dans ce domaine en rejoignant la filière Développeur - Intégrateur Web d'OpenClassrooms.",
+      "Fort de cette nouvelle expérience, j'ai ensuite rejoint un Master en Ingénierie du Web à l'ESGI de Grenoble.",
       "Amoureux du pixel perfect, créatif et possédant un grand sens du détail, j'apprécie particulièrement collaborer étroitement avec les designers.",
       "Si tout cela vous parle, c'est que nous sommes faits pour nous entendre !",
     ],
-    cvLink: '/Nicoo_CV_FR.pdf',
+    cvLink: '/Nicoo_CV.pdf',
+    cvLabel: 'Télécharger mon CV',
   },
   skills: {
     title: 'Les différentes langues que je pratique',

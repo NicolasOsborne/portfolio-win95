@@ -56,10 +56,12 @@ export const contentEn: Content = {
       "Nico, that's me, a Front-End Developer and Web Integrator based in Grenoble, France.",
       'My job? Bringing your designs to life by transforming them into dynamic websites!',
       'Self-taught in code, I later professionalized in this field by joining the Web Developer - Integrator program at OpenClassrooms.',
+      "I then decided to pursue with a Master's degree in Web Engineering at the ESGI in Grenoble",
       'A lover of pixel perfection, creative, and possessing a keen sense of detail, I particularly appreciate collaborating closely with designers.',
-      'If all of this resonates with you, then we are made to work together!',
+      'If all of this resonates with you, then we should definitely work together!',
     ],
     cvLink: '/Nicoo_CV_EN.pdf',
+    cvLabel: 'Download my resume',
   },
   skills: {
     title: 'The different languages I practice',
