@@ -3,16 +3,13 @@ import { Locale } from '@/types/contentType'
 import Home from '@/components/pages/Home'
 
 type HomePageProps = {
-  params: Promise<{ locale: Locale }>
+  params: { locale: Locale }
 }
 
-const HomePage = async ({ params }: HomePageProps) => {
-  const { locale } = await params
-
-  const initialLocale =
-    (locale && (String(locale) as Locale)) || i18nConfig.defaultLocale
-
+export default async function HomePage({ params }: Readonly<HomePageProps>) {
+  const { locale } = params
+  const initialLocale = (locale as Locale) || i18nConfig.defaultLocale
   const content = await getContent(initialLocale)
+
   return <Home serverContent={content} initialLocale={initialLocale} />
 }
-export default HomePage

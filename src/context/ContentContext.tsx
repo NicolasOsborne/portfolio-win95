@@ -5,16 +5,17 @@ import {
   useContext,
   useMemo,
   useState,
+  useEffect,
   FC,
   ReactNode,
 } from 'react'
 import { Content, Locale } from '@/types/contentType'
+import { getContent } from '@/utils/i18n/i18n'
 
 type ContentContextType = {
   content: Content
   locale: Locale
   setLocale: (locale: Locale) => void
-  updateContent: (newContent: Content) => void
 }
 
 const ContentContext = createContext<ContentContextType | undefined>(undefined)
@@ -33,12 +34,17 @@ const ContentProvider: FC<ContentProviderProps> = ({
   const [content, setContent] = useState<Content>(initialContent)
   const [locale, setLocale] = useState<Locale>(initialLocale)
 
-  const updateContent = (newContent: Content) => {
-    setContent(newContent)
-  }
+  useEffect(() => {
+    const fetchContent = async () => {
+      const newContent = await getContent(locale)
+      setContent(newContent)
+      document.documentElement.lang = locale
+    }
+    fetchContent()
+  }, [locale])
 
   const value = useMemo(
-    () => ({ content, locale, setLocale, updateContent }),
+    () => ({ content, locale, setLocale }),
     [content, locale]
   )
 

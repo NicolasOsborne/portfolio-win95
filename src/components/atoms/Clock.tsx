@@ -1,14 +1,12 @@
 'use client'
 
+import { useContent } from '@/context/ContentContext'
 import { FC, useEffect, useState } from 'react'
-
-export type ClockProps = {
-  locale: string
-}
 
 const componentsClass = 'a_Clock'
 
-const Clock: FC<ClockProps> = ({ locale }) => {
+const Clock: FC = () => {
+  const { locale } = useContent()
   const [time, setTime] = useState(new Date())
 
   useEffect(() => {

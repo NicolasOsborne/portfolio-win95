@@ -1,48 +1,42 @@
 'use client'
 
 import { FC, useState } from 'react'
-import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { i18nConfig } from '@/utils/i18n/i18n'
-
-export type LocaleSwitchProps = {
-  currentLocale: string
-}
+import { useContent } from '@/context/ContentContext'
 
 const componentsClass = 'a_LocaleSwitch'
 
-const LocaleSwitch: FC<LocaleSwitchProps> = ({ currentLocale }) => {
+const LocaleSwitch: FC = () => {
+  const { locale, setLocale } = useContent()
   const [open, setOpen] = useState(false)
   const router = useRouter()
   const pathname = usePathname() ?? '/'
-  const searchParams = useSearchParams() ?? new URLSearchParams()
 
   const toggleOpen = () => setOpen(!open)
 
-  const switchLocale = (locale: string) => {
-    if (locale === currentLocale) return
-    const query = searchParams.toString()
-    router.push(
-      `/${locale}${pathname.replace(/^\/(en|fr)/, '')}${
-        query ? `?${query}` : ''
-      }`
-    )
+  const switchLocale = (newLocale: string) => {
+    if (newLocale === locale) return
+    setLocale(newLocale as typeof locale)
+    const newPath = pathname.replace(/^\/(en|fr)/, `/${newLocale}`)
+    router.push(newPath)
     setOpen(false)
   }
 
   return (
     <div className={componentsClass}>
       <button onClick={toggleOpen} className={`${componentsClass}_button`}>
-        {currentLocale?.toUpperCase() || i18nConfig.defaultLocale.toUpperCase()}
+        {locale.toUpperCase()}
       </button>
       {open && (
         <div className={`${componentsClass}_dropdown`}>
-          {i18nConfig.locales.map((locale) => (
+          {i18nConfig.locales.map((l) => (
             <button
+              key={l}
               className={`${componentsClass}_choice`}
-              key={locale}
-              onClick={() => switchLocale(locale)}
+              onClick={() => switchLocale(l)}
             >
-              {locale.toUpperCase()}
+              {l.toUpperCase()}
             </button>
           ))}
         </div>
