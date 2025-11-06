@@ -1,6 +1,8 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC } from 'react'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import Button from '@/components/atoms/Button'
 import Window from '@/components/molecules/Window'
 import { useAuth } from '@/context/AuthContext'
@@ -10,32 +12,31 @@ import { useContent } from '@/context/ContentContext'
 const LoginForm: FC = () => {
   const { login } = useAuth()
   const { content } = useContent()
-
-  const [username, setUsername] = useState('visitor')
-  const [password, setPassword] = useState('password')
-  const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-
   const componentsClass = 'o_LoginForm'
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-    setIsLoading(true)
-
-    try {
-      const success = await login(username, password)
-
-      if (!success) {
-        setError(content.login.error)
+  const formik = useFormik({
+    initialValues: {
+      username: 'visitor',
+      password: 'password',
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required(content.login.errors.usernameRequired),
+      password: Yup.string().required(content.login.errors.passwordRequired),
+    }),
+    onSubmit: async (values, { setSubmitting, setErrors }) => {
+      try {
+        const success = await login(values.username, values.password)
+        if (!success) {
+          setErrors({ password: content.login.errors.error })
+        }
+      } catch (err) {
+        console.error('Login failed unexpectedly:', err)
+        setErrors({ password: 'Unexpected error during login' })
+      } finally {
+        setSubmitting(false)
       }
-    } catch (err) {
-      console.error('Login failed unexpectedly:', err)
-      setError('An unexpected error occurred during login attempt.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
+    },
+  })
 
   return (
     <div className={componentsClass}>
@@ -46,7 +47,10 @@ const LoginForm: FC = () => {
         isFocused={true}
       >
         <div className={`${componentsClass}_window`}>
-          <form onSubmit={handleLogin} className={`${componentsClass}_form`}>
+          <form
+            onSubmit={formik.handleSubmit}
+            className={`${componentsClass}_form`}
+          >
             <div className={`${componentsClass}_content`}>
               <p className={`${componentsClass}_title`}>
                 {content.login.prompt}
@@ -59,12 +63,16 @@ const LoginForm: FC = () => {
                   <input
                     type='text'
                     className={`${componentsClass}_input`}
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    autoFocus
-                    disabled={isLoading}
+                    {...formik.getFieldProps('username')}
+                    disabled={formik.isSubmitting}
                   />
                 </label>
+                {formik.touched.username && formik.errors.username && (
+                  <p className={`${componentsClass}_message-error`}>
+                    {formik.errors.username}
+                  </p>
+                )}
+
                 <label className={`${componentsClass}_row`}>
                   <span className={`${componentsClass}_label`}>
                     {content.login.password}
@@ -72,21 +80,27 @@ const LoginForm: FC = () => {
                   <input
                     type='password'
                     className={`${componentsClass}_input`}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    disabled={isLoading}
+                    {...formik.getFieldProps('password')}
+                    disabled={formik.isSubmitting}
                   />
                 </label>
+                {formik.touched.password && formik.errors.password && (
+                  <p className={`${componentsClass}_message-error`}>
+                    {formik.errors.password}
+                  </p>
+                )}
               </div>
-
-              {error && <p className='error'>{error}</p>}
             </div>
 
             <div className={`${componentsClass}_buttons`}>
-              <Button type='submit' disabled={isLoading}>
-                {isLoading ? '...' : content.login.ok}
+              <Button type='submit' disabled={formik.isSubmitting}>
+                {content.login.ok}
               </Button>
-              <Button type='button' disabled={isLoading}>
+              <Button
+                type='button'
+                disabled={formik.isSubmitting}
+                onClick={() => formik.resetForm()}
+              >
                 {content.login.cancel}
               </Button>
             </div>
