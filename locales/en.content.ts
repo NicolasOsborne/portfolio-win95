@@ -53,6 +53,12 @@ export const contentEn: Content = {
     },
     greeting: 'Welcome back, {username}!',
     logout: 'Log Out',
+    recycle: {
+      id: 'recycle',
+      label: 'Corbeille',
+      icon: '/assets/win95/icons/menu/recycle_full.svg',
+      contentKey: 'recycle',
+    },
   },
   about: {
     title: 'Who is Nicoo?',
@@ -345,8 +351,8 @@ export const contentEn: Content = {
           "Before turning to the web universe, I obtained a Master's degree in Geography, Territorial Planning, and Geomatics in 2016, after studying in Grenoble and Berlin. During my Bachelor's degree, I focused on sustainable development and urban agriculture. In my Master's, I studied natural risks, hydrosystems, biodiversity, and acquired skills in remote sensing, SQL, QGIS, ArcGIS, Python, and R.",
           'I completed two internships: For a Regional Nature Reserve, I created a georeferenced database of naturalist surveys. For a Community of Communes, I developed a database as well as an interactive online map listing places of production and purchase of local products.',
         ],
-        startDate: '2016',
-        endDate: '2011',
+        startDate: '2011',
+        endDate: '2016',
       },
     ],
   },

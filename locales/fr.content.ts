@@ -54,6 +54,12 @@ export const contentFr: Content = {
     },
     greeting: 'Bienvenue, {username}!',
     logout: 'Déconnexion',
+    recycle: {
+      id: 'recycle',
+      label: 'Corbeille',
+      icon: '/assets/win95/icons/menu/recycle_full.svg',
+      contentKey: 'recycle',
+    },
   },
   about: {
     title: "Nicoo, c'est qui ?",
@@ -348,8 +354,8 @@ export const contentFr: Content = {
           "Avant de me tourner vers l'univers du web, j'ai obtenu un Master en Géographie, Aménagement du Territoire et Géomatique en 2016, après des études à Grenoble et Berlin. Pendant ma Licence, je me suis concentré sur le développement durable et l'agriculture urbaine. En Master, j'ai étudié les risques naturels, les hydrosystèmes, la biodiversité et acquis des compétences en télédétection, SQL, QGIS, ArcGIS, Python et R.",
           "J'ai effectué deux stages : Pour une Réserve Naturelle Régionale, j'ai créé une base de données géoréférencées des relevés naturalistes. Pour une Communauté de Communes, j'ai développé une base de données ainsi qu'une carte interactive en ligne recensant les lieux de production et d'achat de produits locaux.",
         ],
-        startDate: '2016',
-        endDate: '2011',
+        startDate: '2011',
+        endDate: '2016',
       },
     ],
   },

@@ -1,0 +1,14 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/typography';
+@use '../../Tools/mixins';
+
+.m_DesktopShortcuts {
+   position: absolute;
+   top: 26px;
+   left: 26px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 36px;
+}

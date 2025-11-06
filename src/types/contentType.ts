@@ -19,6 +19,12 @@ export type DesktopContent = {
   menu: MenuContent
   greeting: string
   logout: string
+  recycle: {
+    id: string
+    label: string
+    icon: string
+    contentKey: string
+  }
 }
 
 export type MenuEntry = {

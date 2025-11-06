@@ -1,0 +1,22 @@
+@use '../../Settings/variables' as *;
+@use '../../Tools/typography';
+@use '../../Tools/mixins';
+
+.a_DesktopIcon {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 8px;
+
+   &_label {
+      color: $color-white;
+      text-shadow: 1px 1px 0 $color-black;
+   }
+
+   &_recycle {
+      position: absolute;
+      bottom: 26px;
+      right: 26px;
+   }
+}

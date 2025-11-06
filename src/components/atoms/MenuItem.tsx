@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Image from 'next/image'
 
 export type MenuEntry = {
-  id: string
+  id?: string
   label: string
   icon: string
   contentKey: string
