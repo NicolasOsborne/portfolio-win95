@@ -9,7 +9,11 @@ export const contentEn: Content = {
     password: 'Password:',
     ok: 'Ok',
     cancel: 'Cancel',
-    error: 'Logon Failure: Unknown user name or bad password.',
+    errors: {
+      usernameRequired: 'Please enter a username',
+      passwordRequired: 'Please enter a password',
+      error: 'Login failed... Please try again',
+    },
   },
   desktop: {
     menu: {
@@ -354,5 +358,15 @@ export const contentEn: Content = {
     },
     submit: 'Send',
     cancel: 'Cancel',
+    errors: {
+      nameRequired: 'Please enter your name',
+      email: {
+        invalid: 'Please enter a valid email address',
+        required: 'Please enter your email',
+      },
+      message: 'Please write a message',
+      success: 'Your message was sent successfully!',
+      error: 'An unexpected error occurred... Please try again.',
+    },
   },
 }

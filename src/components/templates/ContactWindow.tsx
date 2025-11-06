@@ -1,69 +1,61 @@
 'use client'
 
-import { FC, useState } from 'react'
+import { FC } from 'react'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import Button from '@/components/atoms/Button'
 import { useContent } from '@/context/ContentContext'
 
 const ContactWindow: FC = () => {
   const { content } = useContent()
-
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-
   const componentsClass = 't_ContactWindow'
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-    setSuccess('')
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required(content.contact.errors.nameRequired),
+      email: Yup.string()
+        .email(content.contact.errors.email.invalid)
+        .required(content.contact.errors.email.required),
+      message: Yup.string().required(content.contact.errors.message),
+    }),
+    onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
+      setStatus({ success: '', error: '' })
+      try {
+        const token = localStorage.getItem('jwt_token')
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(values),
+        })
 
-    if (!name.trim() || !email.trim() || !message.trim()) {
-      setError('Please fill in all fields')
-      return
-    }
+        if (!res.ok) throw new Error('Failed to send message')
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError('Please enter a valid email address')
-      return
-    }
-
-    setIsLoading(true)
-
-    try {
-      const token = localStorage.getItem('jwt_token')
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ name, email, message }),
-      })
-
-      if (!res.ok) {
-        throw new Error('Failed to send message')
+        setStatus({ success: content.contact.errors.success, error: '' })
+        resetForm()
+      } catch (err) {
+        console.error(err)
+        setStatus({ success: '', error: content.contact.errors.error })
+      } finally {
+        setSubmitting(false)
       }
-
-      setSuccess('Message sent successfully!')
-      setName('')
-      setEmail('')
-      setMessage('')
-    } catch (err) {
-      console.error(err)
-      setError('An unexpected error occurred while sending your message')
-    } finally {
-      setIsLoading(false)
-    }
-  }
+    },
+  })
 
   return (
     <div className={componentsClass}>
       <div className={`${componentsClass}_window`}>
-        <form onSubmit={handleSubmit} className={`${componentsClass}_form`}>
+        <form
+          onSubmit={formik.handleSubmit}
+          className={`${componentsClass}_form`}
+        >
           <div className={`${componentsClass}_fields`}>
             <label className={`${componentsClass}_row`}>
               <span className={`${componentsClass}_label`}>
@@ -73,12 +65,15 @@ const ContactWindow: FC = () => {
                 type='text'
                 className={`${componentsClass}_input`}
                 placeholder={content.contact.name.placeholder}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                disabled={isLoading}
-                autoFocus
+                {...formik.getFieldProps('name')}
+                disabled={formik.isSubmitting}
               />
             </label>
+            {formik.touched.name && formik.errors.name && (
+              <p className={`${componentsClass}_message-error`}>
+                {formik.errors.name}
+              </p>
+            )}
 
             <label className={`${componentsClass}_row`}>
               <span className={`${componentsClass}_label`}>
@@ -88,11 +83,15 @@ const ContactWindow: FC = () => {
                 type='email'
                 className={`${componentsClass}_input`}
                 placeholder={content.contact.email.placeholder}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={isLoading}
+                {...formik.getFieldProps('email')}
+                disabled={formik.isSubmitting}
               />
             </label>
+            {formik.touched.email && formik.errors.email && (
+              <p className={`${componentsClass}_message-error`}>
+                {formik.errors.email}
+              </p>
+            )}
 
             <label className={`${componentsClass}_row`}>
               <span className={`${componentsClass}_label`}>
@@ -101,35 +100,37 @@ const ContactWindow: FC = () => {
               <textarea
                 className={`${componentsClass}_input`}
                 placeholder={content.contact.message.placeholder}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                disabled={isLoading}
+                {...formik.getFieldProps('message')}
+                disabled={formik.isSubmitting}
                 rows={5}
               />
             </label>
+            {formik.touched.message && formik.errors.message && (
+              <p className={`${componentsClass}_message-error`}>
+                {formik.errors.message}
+              </p>
+            )}
           </div>
 
-          {error && (
-            <p className={`${componentsClass}_message-error`}>{error}</p>
+          {formik.status?.error && (
+            <p className={`${componentsClass}_message-error`}>
+              {formik.status.error}
+            </p>
           )}
-          {success && (
-            <p className={`${componentsClass}_message-success`}>{success}</p>
+          {formik.status?.success && (
+            <p className={`${componentsClass}_message-success`}>
+              {formik.status.success}
+            </p>
           )}
 
           <div className={`${componentsClass}_buttons`}>
-            <Button type='submit' disabled={isLoading}>
+            <Button type='submit' disabled={formik.isSubmitting}>
               {content.contact.submit}
             </Button>
             <Button
               type='button'
-              disabled={isLoading}
-              onClick={() => {
-                setName('')
-                setEmail('')
-                setMessage('')
-                setError('')
-                setSuccess('')
-              }}
+              disabled={formik.isSubmitting}
+              onClick={() => formik.resetForm()}
             >
               {content.contact.cancel}
             </Button>

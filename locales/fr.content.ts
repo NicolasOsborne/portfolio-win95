@@ -10,8 +10,11 @@ export const contentFr: Content = {
     password: 'Password :',
     ok: 'Ok',
     cancel: 'Annuler',
-    error:
-      "Échec de la connexion : Nom d'utilisateur inconnu ou mauvais mot de passe.",
+    errors: {
+      usernameRequired: 'Veuillez saisir un utilisteur',
+      passwordRequired: 'Veuillez saisir un mot de passe',
+      error: 'Erreur de connexion... Veuillez réessayer.',
+    },
   },
   desktop: {
     menu: {
@@ -356,5 +359,15 @@ export const contentFr: Content = {
     },
     submit: 'Envoyer',
     cancel: 'Annuler',
+    errors: {
+      nameRequired: 'Veuillez saisir votre nom',
+      email: {
+        invalid: 'Veuillez saisir un email valide',
+        required: 'Veuillez saisir votre email',
+      },
+      message: 'Veuillez saisir votre message',
+      success: 'Votre email a bien été envoyé !',
+      error: 'Une erreur est survenue. Veuillez réessayer.',
+    },
   },
 }

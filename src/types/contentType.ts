@@ -8,7 +8,11 @@ export type LoginContent = {
   password: string
   ok: string
   cancel: string
-  error: string
+  errors: {
+    usernameRequired: string
+    passwordRequired: string
+    error: string
+  }
 }
 
 export type DesktopContent = {
@@ -94,6 +98,16 @@ export type ContactContent = {
   message: Contact
   submit: string
   cancel: string
+  errors: {
+    nameRequired: string
+    email: {
+      invalid: string
+      required: string
+    }
+    message: string
+    success: string
+    error: string
+  }
 }
 
 export type Content = {
