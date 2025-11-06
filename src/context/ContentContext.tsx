@@ -3,14 +3,15 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
-  useEffect,
   FC,
   ReactNode,
 } from 'react'
+import { usePathname } from 'next/navigation'
 import { Content, Locale } from '@/types/contentType'
-import { getContent } from '@/utils/i18n/i18n'
+import { getContent, i18nConfig } from '@/utils/i18n/i18n'
 
 type ContentContextType = {
   content: Content
@@ -22,26 +23,29 @@ const ContentContext = createContext<ContentContextType | undefined>(undefined)
 
 type ContentProviderProps = {
   children: ReactNode
-  initialContent: Content
   initialLocale: Locale
 }
 
 const ContentProvider: FC<ContentProviderProps> = ({
   children,
-  initialContent,
   initialLocale,
 }) => {
-  const [content, setContent] = useState<Content>(initialContent)
+  const pathname = usePathname()
   const [locale, setLocale] = useState<Locale>(initialLocale)
+  const [content, setContent] = useState<Content>(() =>
+    getContent(initialLocale)
+  )
 
   useEffect(() => {
-    const fetchContent = async () => {
-      const newContent = await getContent(locale)
-      setContent(newContent)
-      document.documentElement.lang = locale
+    const match = pathname.match(/^\/(en|fr)/)
+    const urlLocale = (match?.[1] as Locale) || i18nConfig.defaultLocale
+
+    if (urlLocale !== locale) {
+      setLocale(urlLocale)
+      setContent(getContent(urlLocale))
+      document.documentElement.lang = urlLocale
     }
-    fetchContent()
-  }, [locale])
+  }, [pathname])
 
   const value = useMemo(
     () => ({ content, locale, setLocale }),

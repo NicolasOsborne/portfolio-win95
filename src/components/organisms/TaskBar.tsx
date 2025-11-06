@@ -13,7 +13,7 @@ import { useWindows } from '@/context/WindowContext'
 import TaskList from '../molecules/TaskList'
 
 const TaskBar: FC = () => {
-  const { content } = useContent()
+  const { content, locale } = useContent()
   const { logout } = useAuth()
   const { openWindow } = useWindows()
 
@@ -62,7 +62,7 @@ const TaskBar: FC = () => {
       </div>
 
       <div className={`${componentsClass}_right`}>
-        <LocaleSwitch />
+        <LocaleSwitch currentLocale={locale} />
         <Clock />
       </div>
     </div>
