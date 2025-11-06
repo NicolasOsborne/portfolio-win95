@@ -25,7 +25,7 @@ const ContactWindow: FC = () => {
         .required(content.contact.errors.email.required),
       message: Yup.string().required(content.contact.errors.message),
     }),
-    onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       setError('')
       setSuccess('')
 
