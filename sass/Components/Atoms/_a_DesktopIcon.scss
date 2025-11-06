@@ -3,20 +3,93 @@
 @use '../../Tools/mixins';
 
 .a_DesktopIcon {
+   $self: &;
+
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
    gap: 8px;
+   width: 90px;
+   height: 90px;
+   background: transparent;
+   border: none;
+   cursor: pointer;
+   position: relative;
+
+   &:focus {
+      outline: none;
+   }
+
+   &_icon {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      pointer-events: none;
+
+      img {
+         width: 100%;
+         height: 100%;
+         display: block;
+      }
+   }
 
    &_label {
       color: $color-white;
       text-shadow: 1px 1px 0 $color-black;
+      text-align: center;
+      user-select: none;
+      padding: 1px 3px;
+      border: 1px dotted transparent;
+      box-sizing: border-box;
    }
 
    &_recycle {
       position: absolute;
       bottom: 26px;
       right: 26px;
+   }
+
+   &_selected {
+      #{$self}_label {
+         text-shadow: none;
+         padding: 1px 3px;
+         background-color: rgba($color-blue, 0.8);
+         border: .5px dotted $color-white;
+      }
+
+      #{$self}_icon {
+         &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: $color-blue;
+            mix-blend-mode: screen;
+            pointer-events: none;
+         }
+      }
+   }
+
+   &_flashing {
+      #{$self}_icon {
+         &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba($color-white, 0.6);
+            animation: flash 0.2s ease-out;
+            pointer-events: none;
+         }
+      }
+   }
+}
+
+@keyframes flash {
+   from {
+      opacity: 1;
+   }
+
+   to {
+      opacity: 0;
    }
 }

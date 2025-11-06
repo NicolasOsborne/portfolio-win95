@@ -1,8 +1,7 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Image from 'next/image'
 import { MenuEntry } from './MenuItem'
 import classNames from 'classnames'
-import { useWindows } from '@/context/WindowContext'
 
 export type DesktopIconProps = {
   entry: MenuEntry
@@ -12,8 +11,15 @@ export type DesktopIconProps = {
 
 const DesktopIcon: FC<DesktopIconProps> = (props) => {
   const { entry, onClick, isRecycle } = props
-  const { icon, label, contentKey } = entry
-  const { focusWindow } = useWindows()
+  const { icon, label } = entry
+  const [isSelected, setIsSelected] = useState(false)
+  const [isFlashing, setIsFlashing] = useState(false)
+
+  const handleDoubleClick = () => {
+    setIsFlashing(true)
+    onClick?.()
+    setTimeout(() => setIsFlashing(false), 200)
+  }
 
   const componentsClass = 'a_DesktopIcon'
 
@@ -22,17 +28,25 @@ const DesktopIcon: FC<DesktopIconProps> = (props) => {
       type='button'
       className={classNames(componentsClass, {
         [`${componentsClass}_recycle`]: isRecycle,
+        [`${componentsClass}_selected`]: isSelected,
+        [`${componentsClass}_flashing`]: isFlashing,
       })}
-      onClick={() => focusWindow(contentKey)}
-      onDoubleClick={onClick}
+      onDoubleClick={handleDoubleClick}
+      onClick={(e) => {
+        e.stopPropagation()
+        setIsSelected(true)
+      }}
+      onBlur={() => setIsSelected(false)}
     >
-      <Image
-        className={`${componentsClass}_icon`}
-        src={icon}
-        alt={label}
-        width={42}
-        height={42}
-      />
+      <div className={`${componentsClass}_icon`}>
+        <Image
+          // className={`${componentsClass}_icon`}
+          src={icon}
+          alt={label}
+          width={42}
+          height={42}
+        />
+      </div>
       <p className={`${componentsClass}_label`}>{label}</p>
     </button>
   )
