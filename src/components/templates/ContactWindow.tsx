@@ -1,6 +1,6 @@
 'use client'
 
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import Button from '@/components/atoms/Button'
@@ -8,6 +8,8 @@ import { useContent } from '@/context/ContentContext'
 
 const ContactWindow: FC = () => {
   const { content } = useContent()
+  const [success, setSuccess] = useState('')
+  const [error, setError] = useState('')
   const componentsClass = 't_ContactWindow'
 
   const formik = useFormik({
@@ -24,7 +26,9 @@ const ContactWindow: FC = () => {
       message: Yup.string().required(content.contact.errors.message),
     }),
     onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
-      setStatus({ success: '', error: '' })
+      setError('')
+      setSuccess('')
+
       try {
         const token = localStorage.getItem('jwt_token')
         const res = await fetch('/api/contact', {
@@ -38,11 +42,11 @@ const ContactWindow: FC = () => {
 
         if (!res.ok) throw new Error('Failed to send message')
 
-        setStatus({ success: content.contact.errors.success, error: '' })
+        setSuccess(content.contact.errors.success)
         resetForm()
       } catch (err) {
         console.error(err)
-        setStatus({ success: '', error: content.contact.errors.error })
+        setError(content.contact.errors.error)
       } finally {
         setSubmitting(false)
       }
@@ -112,15 +116,11 @@ const ContactWindow: FC = () => {
             )}
           </div>
 
-          {formik.status?.error && (
-            <p className={`${componentsClass}_message-error`}>
-              {formik.status.error}
-            </p>
+          {success && (
+            <p className={`${componentsClass}_message-success`}>{success}</p>
           )}
-          {formik.status?.success && (
-            <p className={`${componentsClass}_message-success`}>
-              {formik.status.success}
-            </p>
+          {error && (
+            <p className={`${componentsClass}_message-error`}>{error}</p>
           )}
 
           <div className={`${componentsClass}_buttons`}>
