@@ -1,15 +1,19 @@
-import { getContent, i18nConfig } from '@/utils/i18n/i18n'
-import { Locale } from '@/types/contentType'
+import { i18nConfig } from '@/utils/i18n/i18n'
 import Home from '@/components/pages/Home'
+import { Locale } from '@/types/contentType'
 
-type HomePageProps = {
-  params: { locale: Locale }
+export function generateStaticParams() {
+  return i18nConfig.locales.map((locale) => ({ locale }))
 }
 
-export default async function HomePage({ params }: Readonly<HomePageProps>) {
-  const { locale } = params
-  const initialLocale = (locale as Locale) || i18nConfig.defaultLocale
-  const content = await getContent(initialLocale)
+export default function HomePage({
+  params,
+}: Readonly<{ params: { locale: string } }>) {
+  const currentLocale: Locale = i18nConfig.locales.includes(
+    params.locale as Locale
+  )
+    ? (params.locale as Locale)
+    : i18nConfig.defaultLocale
 
-  return <Home serverContent={content} initialLocale={initialLocale} />
+  return <Home initialLocale={currentLocale} />
 }
