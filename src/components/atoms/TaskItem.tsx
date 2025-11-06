@@ -29,7 +29,7 @@ const TaskItem: FC<TaskItemProps> = ({ windowData, isFocused, onClick }) => {
         width={16}
         height={16}
       />
-      <span>{windowData.title}</span>
+      <span className={`${componentsClass}_label`}>{windowData.title}</span>
     </button>
   )
 }
