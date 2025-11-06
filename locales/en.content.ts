@@ -281,6 +281,14 @@ export const contentEn: Content = {
     title: 'Where did I learn how to do this?',
     list: [
       {
+        id: 'esgi',
+        title: 'ESGI',
+        subtitle: 'Master in Web Engineering',
+        description: ['Two year Master degree in Web Engineering.'],
+        startDate: 'Sept. 2024',
+        endDate: 'Sept 2026',
+      },
+      {
         id: 'openclassrooms',
         title: 'OpenClassrooms',
         subtitle: 'Front-End Developer and Web Integrator Training',

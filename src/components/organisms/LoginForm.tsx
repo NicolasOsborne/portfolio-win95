@@ -31,7 +31,7 @@ const LoginForm: FC = () => {
         }
       } catch (err) {
         console.error('Login failed unexpectedly:', err)
-        setErrors({ password: 'Unexpected error during login' })
+        setErrors({ password: content.login.errors.error })
       } finally {
         setSubmitting(false)
       }

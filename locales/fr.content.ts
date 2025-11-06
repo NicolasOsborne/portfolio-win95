@@ -282,6 +282,16 @@ export const contentFr: Content = {
     title: "Où est-ce que j'ai appris à faire ça ?",
     list: [
       {
+        id: 'esgi',
+        title: 'ESGI',
+        subtitle: 'Master en Ingénierie du Web',
+        description: [
+          'Formation en alternance de deux ans, en Ingénierie du Web.',
+        ],
+        startDate: 'Sept. 2024',
+        endDate: 'Sept 2026',
+      },
+      {
         id: 'openclassrooms',
         title: 'OpenClassrooms',
         subtitle: 'Formation Développeur Front-End et Intégrateur Web',
