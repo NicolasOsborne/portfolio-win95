@@ -17,7 +17,7 @@ export type OpenWindow = {
   x: number
   y: number
   zIndex: number
-  minimized: boolean
+  isMinimized: boolean
   isFocused: boolean
 }
 
@@ -67,7 +67,7 @@ function windowsReducer(
         x: 100 + state.openWindows.length * 20,
         y: 100 + state.openWindows.length * 20,
         zIndex: state.zCounter + 1,
-        minimized: false,
+        isMinimized: false,
         isFocused: true,
       }
 
@@ -94,7 +94,9 @@ function windowsReducer(
       return {
         ...state,
         openWindows: state.openWindows.map((w) =>
-          w.id === action.payload.id ? { ...w, minimized: true } : w
+          w.id === action.payload.id
+            ? { ...w, isMinimized: true, isFocused: false }
+            : w
         ),
       }
 
@@ -102,7 +104,9 @@ function windowsReducer(
       return {
         ...state,
         openWindows: state.openWindows.map((w) =>
-          w.id === action.payload.id ? { ...w, minimized: false } : w
+          w.id === action.payload.id
+            ? { ...w, isMinimized: false, isFocused: true }
+            : w
         ),
       }
 

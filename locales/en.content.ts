@@ -55,7 +55,7 @@ export const contentEn: Content = {
     logout: 'Log Out',
     recycle: {
       id: 'recycle',
-      label: 'Corbeille',
+      label: 'Recycle Bin',
       icon: '/assets/win95/icons/menu/recycle_full.svg',
       contentKey: 'recycle',
     },

@@ -39,13 +39,7 @@ const DesktopIcon: FC<DesktopIconProps> = (props) => {
       onBlur={() => setIsSelected(false)}
     >
       <div className={`${componentsClass}_icon`}>
-        <Image
-          // className={`${componentsClass}_icon`}
-          src={icon}
-          alt={label}
-          width={42}
-          height={42}
-        />
+        <Image src={icon} alt={label} width={42} height={42} />
       </div>
       <p className={`${componentsClass}_label`}>{label}</p>
     </button>

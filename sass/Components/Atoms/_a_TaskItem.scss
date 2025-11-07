@@ -27,9 +27,6 @@
    white-space: nowrap;
    transition: flex-basis 0.2s ease, max-width 0.2s ease;
 
-   &:active,
-   &:focus,
-   &:focus-visible,
    &_focused {
       @include mixins.border-sunken;
       background-color: $color-grey-lightest;

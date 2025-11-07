@@ -77,13 +77,15 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
   }
 
   const handleMinimize = () => {
-    const taskEl = document.querySelector(`[data-window-id="${windowData.id}"]`)
-    if (!taskEl || !ref.current) {
+    const taskItem = document.querySelector(
+      `[data-window-id="${windowData.id}"]`
+    )
+    if (!taskItem || !ref.current) {
       minimizeWindow(windowData.id)
       return
     }
 
-    const taskRect = taskEl.getBoundingClientRect()
+    const taskRect = taskItem.getBoundingClientRect()
     const winRect = ref.current.getBoundingClientRect()
 
     const translateX =
@@ -104,13 +106,15 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
   }
 
   const handleRestore = () => {
-    const taskEl = document.querySelector(`[data-window-id="${windowData.id}"]`)
-    if (!taskEl || !ref.current) {
+    const taskItem = document.querySelector(
+      `[data-window-id="${windowData.id}"]`
+    )
+    if (!taskItem || !ref.current) {
       restoreWindow(windowData.id)
       return
     }
 
-    const taskRect = taskEl.getBoundingClientRect()
+    const taskRect = taskItem.getBoundingClientRect()
     const winRect = ref.current.getBoundingClientRect()
 
     const translateX =
@@ -145,7 +149,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
 
   return (
     <>
-      {(!windowData.minimized || isAnimating) && (
+      {(!windowData.isMinimized || isAnimating) && (
         <div
           ref={ref}
           style={{
@@ -159,7 +163,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
               'transform 0.25s ease-in-out, opacity 0.25s ease-in-out',
             opacity: customOpacity,
             pointerEvents:
-              windowData.minimized && !isAnimating ? 'none' : 'auto',
+              windowData.isMinimized && !isAnimating ? 'none' : 'auto',
           }}
           onMouseDown={() => focusWindow(windowData.id)}
           role='toolbar'
