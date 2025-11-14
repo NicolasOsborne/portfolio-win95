@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import ControlType from '@/enums/ControlType'
 import Image from 'next/image'
+import ControlIcon from '@/enums/ControlIcon'
 
 export type ControlProps = {
   type: ControlType
@@ -8,11 +9,11 @@ export type ControlProps = {
 }
 
 const icons: Record<ControlType, string> = {
-  [ControlType.CLOSE]: '/assets/win95/icons/controls/close.svg',
-  [ControlType.MINIMIZE]: '/assets/win95/icons/controls/minimize.svg',
-  [ControlType.MAXIMIZE]: '/assets/win95/icons/controls/maximize.svg',
-  [ControlType.HELP]: '/assets/win95/icons/controls/help.svg',
-  [ControlType.RESTORE]: '/assets/win95/icons/controls/restore.svg',
+  [ControlType.CLOSE]: ControlIcon.CLOSE,
+  [ControlType.MINIMIZE]: ControlIcon.MINIMIZE,
+  [ControlType.MAXIMIZE]: ControlIcon.MAXIMIZE,
+  [ControlType.HELP]: ControlIcon.HELP,
+  [ControlType.RESTORE]: ControlIcon.RESTORE,
 }
 
 const Control: FC<ControlProps> = ({ type, onClick }) => {

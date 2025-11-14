@@ -1,10 +1,11 @@
+import DesktopIcon from '@/enums/DesktopIcon'
 import { Content } from '@/types/contentType'
 
 export const contentEn: Content = {
   login: {
-    title: 'Welcome to Nicoo Portfolio',
-    icon: '/assets/win95/icons/menu/keys.svg',
-    prompt: 'Enter your username and password to log into the system.',
+    title: "Welcome to Nicoo's Portfolio",
+    icon: DesktopIcon.LOGIN,
+    prompt: 'Type a user name and password to log on to Windows.',
     username: 'Username:',
     password: 'Password:',
     ok: 'Ok',
@@ -22,31 +23,31 @@ export const contentEn: Content = {
         {
           id: 'about',
           label: 'About',
-          icon: '/assets/win95/icons/menu/info.svg',
+          icon: DesktopIcon.INFO,
           contentKey: 'about',
         },
         {
           id: 'skills',
           label: 'Skills',
-          icon: '/assets/win95/icons/menu/settings.svg',
+          icon: DesktopIcon.SETTINGS,
           contentKey: 'skills',
         },
         {
           id: 'projects',
           label: 'Projects',
-          icon: '/assets/win95/icons/menu/explorer.svg',
+          icon: DesktopIcon.EXPLORER,
           contentKey: 'projects',
         },
         {
           id: 'experience',
           label: 'Experiences',
-          icon: '/assets/win95/icons/menu/app.svg',
+          icon: DesktopIcon.APPLICATION,
           contentKey: 'experience',
         },
         {
           id: 'contact',
           label: 'Contact',
-          icon: '/assets/win95/icons/menu/mail.svg',
+          icon: DesktopIcon.EMAIL,
           contentKey: 'contact',
         },
       ],
@@ -56,7 +57,7 @@ export const contentEn: Content = {
     recycle: {
       id: 'recycle',
       label: 'Recycle Bin',
-      icon: '/assets/win95/icons/menu/recycle_full.svg',
+      icon: DesktopIcon.RECYCLE_FULL,
       contentKey: 'recycle',
     },
   },
