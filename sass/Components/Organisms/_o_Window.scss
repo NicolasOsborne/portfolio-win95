@@ -1,4 +1,5 @@
 @use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
 @use '../../Tools/mixins';
 
 .o_Window {
@@ -21,6 +22,14 @@
    &_desktop {
       position: absolute;
       z-index: 20;
-      min-width: 450px;
+      max-width: 80dvw;
+      width: max-content;
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-s-min) {
+      &_desktop {
+         min-width: 450px;
+         width: auto
+      }
    }
 }
