@@ -1,25 +1,17 @@
 @use '../Settings/variables' as *;
 @use '../Settings/responsive_variables';
 
-// Text
-@mixin fontSize($size: 16px,
-   $lineHeight: ($size + 10px,
-   )) {
+// Utils
+@mixin fontStyle($size, $weight) {
    font-size: $size;
-   line-height: $lineHeight;
-}
-
-@mixin fontStyle($size: 16px,
-   $weight: 400,
-   $lineHeight: ($size + 10px,
-   )) {
-   @include fontSize($size, $lineHeight);
    font-weight: $weight;
 }
 
+// Text
 @mixin body {
-   font-family: 'MS Sans Serif', Arial, sans-serif;
+   font-family: $font-text;
    font-size: 12px;
+   font-weight: 400;
    line-height: 1;
    color: $color-black;
 }
@@ -29,77 +21,75 @@
    font-weight: bold;
 }
 
-// body
-// @mixin body($weight: 400) {
-//    @include fontStyle(14px, $weight, 22px);
-// }
-
-// @mixin body-bold($weight: 700) {
-//    @include body($weight);
-// }
-
-@mixin body-m($weight: 400) {
-   @include fontStyle(16px, $weight, 28px);
+@mixin body-s {
+   @include fontStyle(10px, 400);
 }
 
-@mixin body-m-bold($weight: 700) {
-   @include body-m($weight);
+@mixin body-s-bold {
+   @include fontStyle(10px, 700);
 }
 
-@mixin body-l($weight: 400) {
-   @include fontStyle(18px, $weight, 30px);
+@mixin body-m {
+   @include fontStyle(14px, 400);
 }
 
-@mixin body-l-bold($weight: 700) {
-   @include body-l($weight);
+@mixin body-m-bold {
+   @include fontStyle(14px, 700);
 }
 
+@mixin body-l {
+   @include fontStyle(16px, 400);
+}
+
+@mixin body-l-bold {
+   @include fontStyle(16px, 700);
+}
+
+// Titles
 @mixin title {
    font-family: $font-title;
 }
 
 @mixin h1 {
    @include title;
-   @include fontSize(56px, 60px);
+   @include fontStyle(32px, 400);
 
    @media screen and (min-width: responsive_variables.$screen-l-min) {
-      @include fontSize(100px, 102px);
+      @include fontStyle(32px, 400);
    }
 }
 
 @mixin h2 {
    @include title;
-   @include fontSize(44px, 48px);
-   letter-spacing: -0.88px;
+   @include fontStyle(24px, 400);
 
    @media screen and (min-width: responsive_variables.$screen-l-min) {
-      @include fontSize(80px, 80px);
-      letter-spacing: -1.6px;
+      @include fontStyle(24px, 400);
    }
 }
 
 @mixin h3 {
    @include title;
-   @include fontSize(32px, 40px);
+   @include fontStyle(22px, 400);
 
    @media screen and (min-width: responsive_variables.$screen-l-min) {
-      @include fontSize(44px, 51px);
+      @include fontStyle(22px, 400);
    }
 }
 
 @mixin h4 {
    @include title;
-   @include fontSize(22px, normal);
+   @include fontStyle(18px, 400);
 
    @media screen and (min-width: responsive_variables.$screen-l-min) {
-      font-size: 28px;
+      @include fontStyle(18px, 400);
    }
 }
 
-@mixin h5($weight: 700) {
-   @include fontStyle(20px, $weight, 30px);
+@mixin h5 {
+   @include fontStyle(18px, 700);
 
    @media screen and (min-width: responsive_variables.$screen-l-min) {
-      @include fontStyle(24px, $weight, 38px);
+      @include fontStyle(18px, 700);
    }
 }

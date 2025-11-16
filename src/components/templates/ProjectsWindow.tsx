@@ -4,7 +4,6 @@ import { FC, useState } from 'react'
 import { useContent } from '@/context/ContentContext'
 import Tabs from '@/components/molecules/Tabs'
 import SkillsChecklist from '@/components/molecules/SkillsChecklist'
-import Button from '../atoms/Button'
 
 const ProjectsWindow: FC = () => {
   const { content } = useContent()

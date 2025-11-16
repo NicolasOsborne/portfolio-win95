@@ -17,13 +17,15 @@
 
       background-color: $window-face;
       padding: 8px;
+      overflow: auto;
    }
 
    &_desktop {
       position: absolute;
       z-index: 20;
-      max-width: 80dvw;
       width: max-content;
+      max-width: 80dvw;
+      max-height: 85dvh;
    }
 
    @media screen and (min-width: responsive_variables.$screen-s-min) {
