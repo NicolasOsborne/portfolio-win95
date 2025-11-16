@@ -10,6 +10,7 @@ export type TitleBarProps = {
   controls?: ControlType[]
   controlHandlers?: Record<ControlType, () => void>
   onMouseDown?: (e: React.MouseEvent) => void
+  onTouchStart?: (e: React.TouchEvent) => void
   isFocused?: boolean
 }
 
@@ -19,6 +20,7 @@ const TitleBar: FC<TitleBarProps> = ({
   controls,
   controlHandlers,
   onMouseDown,
+  onTouchStart,
   isFocused,
 }) => {
   const componentsClass = 'm_TitleBar'
@@ -29,6 +31,7 @@ const TitleBar: FC<TitleBarProps> = ({
         [`${componentsClass}_unfocus`]: !isFocused,
       })}
       onMouseDown={onMouseDown}
+      onTouchStart={onTouchStart}
       role='toolbar'
       aria-label={`Drag ${title} window`}
     >
