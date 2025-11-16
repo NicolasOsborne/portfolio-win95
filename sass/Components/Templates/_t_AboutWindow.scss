@@ -4,11 +4,12 @@
 @use '../../Tools/mixins';
 
 .t_AboutWindow {
+   @include mixins.border-flat;
    display: flex;
    flex: 1;
    height: 100%;
+   max-height: 80dvh;
    background-color: $window-face;
-   @include mixins.border-flat;
    box-sizing: border-box;
    padding: 2px;
    width: fit-content;

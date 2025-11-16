@@ -3,7 +3,6 @@
 import { FC, useState } from 'react'
 import Button from '../atoms/Button'
 import Image from 'next/image'
-import Start from '@/../public/assets/win95/icons/menu/start.svg'
 import LocaleSwitch from '../atoms/LocaleSwitch'
 import Clock from '../atoms/Clock'
 import Menu from '../molecules/Menu'
@@ -11,6 +10,7 @@ import { useContent } from '@/context/ContentContext'
 import { useAuth } from '@/context/AuthContext'
 import { useWindows } from '@/context/WindowContext'
 import TaskList from '../molecules/TaskList'
+import DesktopIcon from '@/enums/DesktopIcon'
 
 const TaskBar: FC = () => {
   const { content, locale } = useContent()
@@ -30,7 +30,7 @@ const TaskBar: FC = () => {
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <Image
-          src={Start}
+          src={DesktopIcon.START}
           alt={content.desktop.menu.title}
           width={20}
           height={20}

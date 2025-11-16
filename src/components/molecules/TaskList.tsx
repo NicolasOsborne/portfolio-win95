@@ -3,7 +3,8 @@ import { useWindows } from '@/context/WindowContext'
 import TaskItem from '@/components/atoms/TaskItem'
 
 const TaskList: FC = () => {
-  const { openWindows, focusWindow, restoreWindow } = useWindows()
+  const { openWindows, focusWindow, restoreWindow, minimizeWindow } =
+    useWindows()
 
   const componentsClass = 'm_TaskList'
 
@@ -15,10 +16,14 @@ const TaskList: FC = () => {
           windowData={window}
           isFocused={window.isFocused}
           onClick={() => {
-            if (window.minimized) {
+            if (window.isMinimized) {
               restoreWindow(window.id)
+              focusWindow(window.id)
+            } else if (window.isFocused) {
+              minimizeWindow(window.id)
+            } else {
+              focusWindow(window.id)
             }
-            focusWindow(window.id)
           }}
         />
       ))}

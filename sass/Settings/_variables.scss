@@ -1,6 +1,16 @@
-// FONT
-$font-text: 'MS Sans Serif', 'Arial', sans-serif;
-$font-title: 'MS Sans Serif', 'Arial', sans-serif;
+// FONTS
+// Win95
+@font-face {
+   font-family: 'Win95';
+   src: url('/fonts/Win95/w95fa.woff2') format('woff2'),
+      url('/fonts/Win95/w95fa.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+}
+
+$font-text: 'Win95', sans-serif;
+$font-title: 'Win95', sans-serif;
 
 // COLORS
 $color-black: #000000;
@@ -27,22 +37,18 @@ $button-border: $color-black;
 $text-color: $color-black;
 $text-disabled: $color-grey-dark;
 
-// Wrapper
+// WRAPPER
 $wrapper: 1512px;
 
-// Shadow
-/* shadow-S */
+// SHADOWS
+// S
 $shadow-s: 0px 2px 16px 0px rgba($color-black, 0.22);
 
-/* shadow-M */
+// M
 $shadow-m: 0px 2px 16px 0px $color-black;
 
-/* shadow-L */
+// L
 $shadow-l: 0 2px 32px 0 rgba($color-black, 0.18);
 
-// Spacing
-$spacing: 60px;
-$spacing-min: 20px;
-
-// Animation
+// ANIMATION
 $animation: 300ms;

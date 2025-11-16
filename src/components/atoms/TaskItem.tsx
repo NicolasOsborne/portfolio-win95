@@ -9,7 +9,8 @@ export type TaskItemProps = {
   onClick?: () => void
 }
 
-const TaskItem: FC<TaskItemProps> = ({ windowData, isFocused, onClick }) => {
+const TaskItem: FC<TaskItemProps> = (props) => {
+  const { windowData, isFocused, onClick } = props
   const componentsClass = 'a_TaskItem'
 
   return (
@@ -18,7 +19,7 @@ const TaskItem: FC<TaskItemProps> = ({ windowData, isFocused, onClick }) => {
       type='button'
       disabled={false}
       className={classNames(componentsClass, {
-        [`${componentsClass}_focused`]: isFocused && !windowData.minimized,
+        [`${componentsClass}_focused`]: isFocused,
       })}
       onClick={onClick}
       title={windowData.title}
@@ -29,7 +30,7 @@ const TaskItem: FC<TaskItemProps> = ({ windowData, isFocused, onClick }) => {
         width={16}
         height={16}
       />
-      <span>{windowData.title}</span>
+      <span className={`${componentsClass}_label`}>{windowData.title}</span>
     </button>
   )
 }

@@ -1,13 +1,14 @@
+import DesktopIcon from '@/enums/DesktopIcon'
 import { Content } from '@/types/contentType'
 
 export const contentFr: Content = {
   login: {
     title: 'Bienvenue sur le Portfolio de Nicoo',
-    icon: '/assets/win95/icons/menu/keys.svg',
+    icon: DesktopIcon.LOGIN,
     prompt:
       "Saisissez votre nom d'utilisteur et votre mot de passe pour vous connecter au système.",
-    username: 'Username :',
-    password: 'Password :',
+    username: 'Utilisateur :',
+    password: 'Mot de passe :',
     ok: 'Ok',
     cancel: 'Annuler',
     errors: {
@@ -23,37 +24,43 @@ export const contentFr: Content = {
         {
           id: 'about',
           label: 'À propos',
-          icon: '/assets/win95/icons/menu/info.svg',
+          icon: DesktopIcon.INFO,
           contentKey: 'about',
         },
         {
           id: 'skills',
           label: 'Compétences',
-          icon: '/assets/win95/icons/menu/settings.svg',
+          icon: DesktopIcon.SETTINGS,
           contentKey: 'skills',
         },
         {
           id: 'projects',
           label: 'Projets',
-          icon: '/assets/win95/icons/menu/explorer.svg',
+          icon: DesktopIcon.EXPLORER,
           contentKey: 'projects',
         },
         {
           id: 'experience',
           label: 'Expériences',
-          icon: '/assets/win95/icons/menu/app.svg',
+          icon: DesktopIcon.APPLICATION,
           contentKey: 'experience',
         },
         {
           id: 'contact',
           label: 'Contact',
-          icon: '/assets/win95/icons/menu/mail.svg',
+          icon: DesktopIcon.EMAIL,
           contentKey: 'contact',
         },
       ],
     },
     greeting: 'Bienvenue, {username}!',
     logout: 'Déconnexion',
+    recycle: {
+      id: 'recycle',
+      label: 'Corbeille',
+      icon: DesktopIcon.RECYCLE_FULL,
+      contentKey: 'recycle',
+    },
   },
   about: {
     title: "Nicoo, c'est qui ?",
@@ -348,8 +355,8 @@ export const contentFr: Content = {
           "Avant de me tourner vers l'univers du web, j'ai obtenu un Master en Géographie, Aménagement du Territoire et Géomatique en 2016, après des études à Grenoble et Berlin. Pendant ma Licence, je me suis concentré sur le développement durable et l'agriculture urbaine. En Master, j'ai étudié les risques naturels, les hydrosystèmes, la biodiversité et acquis des compétences en télédétection, SQL, QGIS, ArcGIS, Python et R.",
           "J'ai effectué deux stages : Pour une Réserve Naturelle Régionale, j'ai créé une base de données géoréférencées des relevés naturalistes. Pour une Communauté de Communes, j'ai développé une base de données ainsi qu'une carte interactive en ligne recensant les lieux de production et d'achat de produits locaux.",
         ],
-        startDate: '2016',
-        endDate: '2011',
+        startDate: '2011',
+        endDate: '2016',
       },
     ],
   },

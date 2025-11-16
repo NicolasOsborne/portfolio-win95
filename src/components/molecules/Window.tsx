@@ -10,6 +10,7 @@ export type WindowProps = {
   controlHandlers?: Record<ControlType, () => void>
   className?: string
   onDragStart?: (e: React.MouseEvent) => void
+  onTouchStart?: (e: React.TouchEvent) => void
   isFocused?: boolean
 }
 
@@ -21,6 +22,7 @@ const Window: FC<WindowProps> = ({
   controlHandlers,
   className = '',
   onDragStart,
+  onTouchStart,
   isFocused,
 }) => {
   const componentsClass = 'o_Window'
@@ -35,6 +37,7 @@ const Window: FC<WindowProps> = ({
         controls={controls ?? defaultControls}
         controlHandlers={controlHandlers}
         onMouseDown={onDragStart}
+        onTouchStart={onTouchStart}
         isFocused={isFocused}
       />
       <div className={`${componentsClass}_content`}>{children}</div>

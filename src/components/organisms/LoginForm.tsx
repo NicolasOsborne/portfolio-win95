@@ -8,6 +8,7 @@ import Window from '@/components/molecules/Window'
 import { useAuth } from '@/context/AuthContext'
 import ControlType from '@/enums/ControlType'
 import { useContent } from '@/context/ContentContext'
+import Image from 'next/image'
 
 const LoginForm: FC = () => {
   const { login } = useAuth()
@@ -52,9 +53,18 @@ const LoginForm: FC = () => {
             className={`${componentsClass}_form`}
           >
             <div className={`${componentsClass}_content`}>
-              <p className={`${componentsClass}_title`}>
-                {content.login.prompt}
-              </p>
+              <div className={`${componentsClass}_header`}>
+                <Image
+                  src={content.login.icon}
+                  alt={content.login.title}
+                  width={42}
+                  height={42}
+                />
+                <p className={`${componentsClass}_title`}>
+                  {content.login.prompt}
+                </p>
+              </div>
+
               <div className={`${componentsClass}_fields`}>
                 <label className={`${componentsClass}_row`}>
                   <span className={`${componentsClass}_label`}>

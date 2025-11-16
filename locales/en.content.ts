@@ -1,10 +1,11 @@
+import DesktopIcon from '@/enums/DesktopIcon'
 import { Content } from '@/types/contentType'
 
 export const contentEn: Content = {
   login: {
-    title: 'Welcome to Nicoo Portfolio',
-    icon: '/assets/win95/icons/menu/keys.svg',
-    prompt: 'Enter your username and password to log into the system.',
+    title: "Welcome to Nicoo's Portfolio",
+    icon: DesktopIcon.LOGIN,
+    prompt: 'Type a user name and password to log on to Windows.',
     username: 'Username:',
     password: 'Password:',
     ok: 'Ok',
@@ -22,37 +23,43 @@ export const contentEn: Content = {
         {
           id: 'about',
           label: 'About',
-          icon: '/assets/win95/icons/menu/info.svg',
+          icon: DesktopIcon.INFO,
           contentKey: 'about',
         },
         {
           id: 'skills',
           label: 'Skills',
-          icon: '/assets/win95/icons/menu/settings.svg',
+          icon: DesktopIcon.SETTINGS,
           contentKey: 'skills',
         },
         {
           id: 'projects',
           label: 'Projects',
-          icon: '/assets/win95/icons/menu/explorer.svg',
+          icon: DesktopIcon.EXPLORER,
           contentKey: 'projects',
         },
         {
           id: 'experience',
           label: 'Experiences',
-          icon: '/assets/win95/icons/menu/app.svg',
+          icon: DesktopIcon.APPLICATION,
           contentKey: 'experience',
         },
         {
           id: 'contact',
           label: 'Contact',
-          icon: '/assets/win95/icons/menu/mail.svg',
+          icon: DesktopIcon.EMAIL,
           contentKey: 'contact',
         },
       ],
     },
     greeting: 'Welcome back, {username}!',
     logout: 'Log Out',
+    recycle: {
+      id: 'recycle',
+      label: 'Recycle Bin',
+      icon: DesktopIcon.RECYCLE_FULL,
+      contentKey: 'recycle',
+    },
   },
   about: {
     title: 'Who is Nicoo?',
@@ -345,8 +352,8 @@ export const contentEn: Content = {
           "Before turning to the web universe, I obtained a Master's degree in Geography, Territorial Planning, and Geomatics in 2016, after studying in Grenoble and Berlin. During my Bachelor's degree, I focused on sustainable development and urban agriculture. In my Master's, I studied natural risks, hydrosystems, biodiversity, and acquired skills in remote sensing, SQL, QGIS, ArcGIS, Python, and R.",
           'I completed two internships: For a Regional Nature Reserve, I created a georeferenced database of naturalist surveys. For a Community of Communes, I developed a database as well as an interactive online map listing places of production and purchase of local products.',
         ],
-        startDate: '2016',
-        endDate: '2011',
+        startDate: '2011',
+        endDate: '2016',
       },
     ],
   },

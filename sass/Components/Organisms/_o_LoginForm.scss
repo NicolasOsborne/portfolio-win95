@@ -9,6 +9,7 @@
    left: 50%;
    transform: translate(-50%, -50%);
    width: 450px;
+   max-width: 80%;
    z-index: 20;
 
    &_window {
@@ -21,7 +22,7 @@
 
    &_form {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       gap: 16px;
       justify-content: space-between;
       align-items: flex-start;
@@ -33,6 +34,12 @@
       gap: 16px;
    }
 
+   &_header {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+   }
+
    &_title {
       @include typography.body;
    }
@@ -41,23 +48,32 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+      max-width: fit-content;
    }
 
    &_row {
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      gap: 16px;
    }
 
    &_input {
       @include mixins.border-input;
    }
 
+   &_label {
+      white-space: nowrap;
+      flex-grow: 1;
+   }
+
    &_buttons {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: flex-end;
       gap: 8px;
+      width: 100%;
    }
 
    &_message-error,
@@ -67,5 +83,25 @@
 
    &_message-error {
       color: red;
+   }
+
+   @media screen and (max-width: responsive_variables.$screen-xxxs-max) {
+      &_input {
+         max-width: 120px;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-xs-min) {
+      &_form {
+         flex-direction: row;
+         justify-content: space-between;
+         align-items: flex-start;
+      }
+
+      &_buttons {
+         flex-direction: column;
+         justify-content: flex-start;
+         width: fit-content;
+      }
    }
 }

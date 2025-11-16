@@ -30,14 +30,71 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
   const [customTransform, setCustomTransform] = useState<string>('none')
   const [customOpacity, setCustomOpacity] = useState<number>(1)
 
+  // Coordinates for window drag and drop
+  const getCoords = (
+    event: MouseEvent | TouchEvent | React.MouseEvent | React.TouchEvent
+  ) => {
+    if ('touches' in event) {
+      return {
+        x: event.touches[0].clientX,
+        y: event.touches[0].clientY,
+      }
+    }
+    return {
+      x: event.clientX,
+      y: event.clientY,
+    }
+  }
+
+  // Touch events (mobile)
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault()
+    if (e.touches.length !== 1) return
+
+    focusWindow(windowData.id)
+    draggingRef.current = true
+
+    const { x: clientX, y: clientY } = getCoords(e)
+
+    dragOffset.current = {
+      x: clientX - windowData.x,
+      y: clientY - windowData.y,
+    }
+
+    document.addEventListener('touchmove', handleTouchMove)
+    document.addEventListener('touchend', handleTouchEnd)
+  }
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!draggingRef.current) return
+
+    const { x: clientX, y: clientY } = getCoords(e)
+
+    moveWindow(
+      windowData.id,
+      clientX - dragOffset.current.x,
+      clientY - dragOffset.current.y
+    )
+  }
+
+  const handleTouchEnd = () => {
+    draggingRef.current = false
+    document.removeEventListener('touchmove', handleTouchMove)
+    document.removeEventListener('touchend', handleTouchEnd)
+  }
+
+  // Mouse events (desktop)
   const handleMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 0) return
 
     focusWindow(windowData.id)
     draggingRef.current = true
+
+    const { x: clientX, y: clientY } = getCoords(e)
+
     dragOffset.current = {
-      x: e.clientX - windowData.x,
-      y: e.clientY - windowData.y,
+      x: clientX - windowData.x,
+      y: clientY - windowData.y,
     }
 
     document.addEventListener('mousemove', handleMouseMove)
@@ -46,10 +103,13 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
 
   const handleMouseMove = (e: MouseEvent) => {
     if (!draggingRef.current) return
+
+    const { x: clientX, y: clientY } = getCoords(e)
+
     moveWindow(
       windowData.id,
-      e.clientX - dragOffset.current.x,
-      e.clientY - dragOffset.current.y
+      clientX - dragOffset.current.x,
+      clientY - dragOffset.current.y
     )
   }
 
@@ -77,13 +137,15 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
   }
 
   const handleMinimize = () => {
-    const taskEl = document.querySelector(`[data-window-id="${windowData.id}"]`)
-    if (!taskEl || !ref.current) {
+    const taskItem = document.querySelector(
+      `[data-window-id="${windowData.id}"]`
+    )
+    if (!taskItem || !ref.current) {
       minimizeWindow(windowData.id)
       return
     }
 
-    const taskRect = taskEl.getBoundingClientRect()
+    const taskRect = taskItem.getBoundingClientRect()
     const winRect = ref.current.getBoundingClientRect()
 
     const translateX =
@@ -104,13 +166,15 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
   }
 
   const handleRestore = () => {
-    const taskEl = document.querySelector(`[data-window-id="${windowData.id}"]`)
-    if (!taskEl || !ref.current) {
+    const taskItem = document.querySelector(
+      `[data-window-id="${windowData.id}"]`
+    )
+    if (!taskItem || !ref.current) {
       restoreWindow(windowData.id)
       return
     }
 
-    const taskRect = taskEl.getBoundingClientRect()
+    const taskRect = taskItem.getBoundingClientRect()
     const winRect = ref.current.getBoundingClientRect()
 
     const translateX =
@@ -145,7 +209,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
 
   return (
     <>
-      {(!windowData.minimized || isAnimating) && (
+      {(!windowData.isMinimized || isAnimating) && (
         <div
           ref={ref}
           style={{
@@ -159,9 +223,10 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
               'transform 0.25s ease-in-out, opacity 0.25s ease-in-out',
             opacity: customOpacity,
             pointerEvents:
-              windowData.minimized && !isAnimating ? 'none' : 'auto',
+              windowData.isMinimized && !isAnimating ? 'none' : 'auto',
           }}
           onMouseDown={() => focusWindow(windowData.id)}
+          onTouchStart={() => focusWindow(windowData.id)}
           role='toolbar'
           aria-label={`${windowData.title} window`}
         >
@@ -176,6 +241,7 @@ const WindowContainer: FC<{ windowData: OpenWindow }> = ({ windowData }) => {
             controlHandlers={controlHandlers}
             className={`${childClass}_desktop`}
             onDragStart={handleMouseDown}
+            onTouchStart={handleTouchStart}
             isFocused={windowData.isFocused}
           >
             {getContent(windowData.contentKey)}

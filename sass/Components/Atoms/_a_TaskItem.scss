@@ -19,11 +19,22 @@
    height: 100%;
    width: 150px;
 
-   &:active,
-   &:focus,
-   &:focus-visible,
+   flex: 1 1 0;
+   max-width: 150px;
+
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   transition: flex-basis 0.2s ease, max-width 0.2s ease;
+
    &_focused {
       @include mixins.border-sunken;
       background-color: $color-grey-lightest;
+   }
+
+   &_label {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
    }
 }

@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import Image from 'next/image'
 import MenuItem, { MenuEntry } from '../atoms/MenuItem'
-
-import Logout from '@/../public/assets/win95/icons/menu/shutdown.svg'
+import DesktopIcon from '@/enums/DesktopIcon'
 
 export type MenuProps = {
   entries: MenuEntry[]
@@ -27,7 +26,12 @@ const Menu: FC<MenuProps> = (props) => {
           className={`${childClass} ${childClass}_logout`}
           onClick={onLogout}
         >
-          <Image src={Logout} alt={logoutLabel} width={32} height={32} />
+          <Image
+            src={DesktopIcon.SHUTDOWN}
+            alt={logoutLabel}
+            width={32}
+            height={32}
+          />
           <span className={`${childClass}_label`}>{logoutLabel}</span>
         </button>
       </div>

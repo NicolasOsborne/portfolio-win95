@@ -17,7 +17,7 @@ export type OpenWindow = {
   x: number
   y: number
   zIndex: number
-  minimized: boolean
+  isMinimized: boolean
   isFocused: boolean
 }
 
@@ -52,6 +52,17 @@ const initialState: WindowsState = {
   zCounter: 1,
 }
 
+const getInitialOffset = (): number => {
+  if (typeof globalThis.window === 'undefined') {
+    return 100
+  }
+  const isMobile = window.innerWidth < 768
+  if (!isMobile) {
+    return 100
+  }
+  return 20
+}
+
 function windowsReducer(
   state: WindowsState,
   action: WindowsAction
@@ -59,15 +70,18 @@ function windowsReducer(
   switch (action.type) {
     case 'OPEN_WINDOW': {
       const id = `${action.payload.contentKey}-${Date.now()}`
+      const baseOffset = getInitialOffset()
+      const stackOffset = state.openWindows.length * 20
+
       const newWindow: OpenWindow = {
         id,
         contentKey: action.payload.contentKey,
         title: action.payload.title,
         icon: action.payload.icon,
-        x: 100 + state.openWindows.length * 20,
-        y: 100 + state.openWindows.length * 20,
+        x: baseOffset + stackOffset,
+        y: baseOffset + stackOffset,
         zIndex: state.zCounter + 1,
-        minimized: false,
+        isMinimized: false,
         isFocused: true,
       }
 
@@ -94,7 +108,9 @@ function windowsReducer(
       return {
         ...state,
         openWindows: state.openWindows.map((w) =>
-          w.id === action.payload.id ? { ...w, minimized: true } : w
+          w.id === action.payload.id
+            ? { ...w, isMinimized: true, isFocused: false }
+            : w
         ),
       }
 
@@ -102,7 +118,9 @@ function windowsReducer(
       return {
         ...state,
         openWindows: state.openWindows.map((w) =>
-          w.id === action.payload.id ? { ...w, minimized: false } : w
+          w.id === action.payload.id
+            ? { ...w, isMinimized: false, isFocused: true }
+            : w
         ),
       }
 
