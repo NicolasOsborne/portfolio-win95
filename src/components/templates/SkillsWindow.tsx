@@ -14,27 +14,32 @@ const SkillsWindow: FC = () => {
   const categories = [
     {
       key: 'devSkills',
-      label: skills.devSkills.subtitle,
+      label: skills.devSkills.title,
+      subtitle: skills.devSkills.subtitle,
       list: skills.devSkills.list,
     },
     {
       key: 'languageSkills',
-      label: skills.languageSkills.subtitle,
+      label: skills.languageSkills.title,
+      subtitle: skills.languageSkills.subtitle,
       list: skills.languageSkills.list,
     },
     {
       key: 'toolSkills',
-      label: skills.toolSkills.subtitle,
+      label: skills.toolSkills.title,
+      subtitle: skills.toolSkills.subtitle,
       list: skills.toolSkills.list,
     },
     {
       key: 'softSkills',
-      label: skills.softSkills.subtitle,
+      label: skills.softSkills.title,
+      subtitle: skills.softSkills.subtitle,
       list: skills.softSkills.list,
     },
     {
       key: 'otherSkills',
-      label: skills.otherSkills.subtitle,
+      label: skills.otherSkills.title,
+      subtitle: skills.otherSkills.subtitle,
       list: skills.otherSkills.list,
     },
   ]
@@ -45,12 +50,22 @@ const SkillsWindow: FC = () => {
   return (
     <div className={componentsClass}>
       <Tabs
-        tabs={categories.map((c) => ({ key: c.key, label: c.label }))}
+        tabs={categories.map((category) => ({
+          key: category.key,
+          label: category.label,
+        }))}
         activeTab={activeTab}
         onTabClick={setActiveTab}
       />
       <div className={`${componentsClass}_content`}>
-        {currentCategory && <SkillsChecklist skills={currentCategory.list} />}
+        {currentCategory && (
+          <fieldset className={`${componentsClass}_section`}>
+            <legend className={`${componentsClass}_subtitle`}>
+              {currentCategory.subtitle}
+            </legend>
+            <SkillsChecklist skills={currentCategory.list} />
+          </fieldset>
+        )}
       </div>
     </div>
   )

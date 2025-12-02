@@ -78,7 +78,8 @@ export const contentFr: Content = {
   skills: {
     title: 'Les différentes langues que je pratique',
     devSkills: {
-      subtitle: 'Langages',
+      title: 'Langages',
+      subtitle: 'Quand je parle avec les ordinateurs',
       list: [
         'HTML',
         'CSS',
@@ -95,14 +96,16 @@ export const contentFr: Content = {
       ],
     },
     languageSkills: {
-      subtitle: 'Langues',
+      title: 'Langues',
+      subtitle: 'Quand je parle avec les humains',
       list: [
         'Anglais (Ma langue maternelle)',
         'Français (Mon autre langue maternelle)',
       ],
     },
     toolSkills: {
-      subtitle: 'Outils',
+      title: 'Outils',
+      subtitle: "Les différents outils que j'utilise",
       list: [
         'Figma',
         'GitHub',
@@ -116,7 +119,8 @@ export const contentFr: Content = {
       ],
     },
     softSkills: {
-      subtitle: 'Compétences',
+      title: 'Compétences',
+      subtitle: 'Mes compétences et soft-skills',
       list: [
         'Développement Front-End',
         'Intégration Web',
@@ -135,7 +139,8 @@ export const contentFr: Content = {
       ],
     },
     otherSkills: {
-      subtitle: 'Parcours',
+      title: 'Parcours',
+      subtitle: "Mais avant ça, j'ai eu d'autres vies",
       list: [
         'Brasseur',
         'Pub Manager',
@@ -155,6 +160,11 @@ export const contentFr: Content = {
       {
         id: 'vetipole',
         title: 'Vétipôle',
+        subtitles: {
+          context: 'Contexte',
+          tools: 'Langages & outils utilisés',
+          steps: 'Réalisation',
+        },
         shortDescription: 'Site internet de la clinique vétérinaire Vétipôle',
         longDescription: [
           'En mars 2023, une nouvelle clinique vétérinaire a ouvert ses portes à Saint-Jeoire-Prieuré, en Savoie.',
@@ -182,6 +192,11 @@ export const contentFr: Content = {
       {
         id: 'ethereal',
         title: 'Ethereal Decibel Company',
+        subtitles: {
+          context: 'Contexte',
+          tools: 'Langages & outils utilisés',
+          steps: 'Réalisation',
+        },
         shortDescription:
           "Site internet de l'association Ethereal Decibel Company",
         longDescription: [
@@ -211,6 +226,11 @@ export const contentFr: Content = {
       {
         id: 'extellient',
         title: 'Extellient',
+        subtitles: {
+          context: 'Contexte',
+          tools: 'Langages & outils utilisés',
+          steps: 'Réalisation',
+        },
         shortDescription:
           "Refonte du site internet de l'agence grenobloise Extellient. Intégration et référencement SEO.",
         longDescription: [
@@ -231,6 +251,11 @@ export const contentFr: Content = {
       {
         id: 'dock14',
         title: 'Dock 14',
+        subtitles: {
+          context: 'Contexte',
+          tools: 'Langages & outils utilisés',
+          steps: 'Réalisation',
+        },
         shortDescription:
           'Mise en place du référencement et SEO pour le site du Dock 14, Laser Game à Échirolles',
         longDescription: [
@@ -252,7 +277,12 @@ export const contentFr: Content = {
       },
       {
         id: 'portfolio',
-        title: 'Porfolio',
+        title: 'Portfolio',
+        subtitles: {
+          context: 'Contexte',
+          tools: 'Langages & outils utilisés',
+          steps: 'Réalisation',
+        },
         shortDescription:
           'Projet de création et mise en ligne de mon portfolio personnel',
         longDescription: [

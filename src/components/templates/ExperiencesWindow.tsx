@@ -6,7 +6,6 @@ import Tabs from '@/components/molecules/Tabs'
 
 const ExperiencesWindow: FC = () => {
   const { content } = useContent()
-  const componentsClass = 't_ExperiencesWindow'
 
   const experiences = content.experience.list
 
@@ -21,6 +20,8 @@ const ExperiencesWindow: FC = () => {
     (c) => c.key === activeTab
   )?.experience
 
+  const componentsClass = 't_ExperiencesWindow'
+
   return (
     <div className={componentsClass}>
       <Tabs
@@ -34,15 +35,21 @@ const ExperiencesWindow: FC = () => {
           <h1 className={`${componentsClass}_title`}>
             {currentExperience.subtitle}
           </h1>
-          <p className={`${componentsClass}_dates`}>
-            {currentExperience.startDate}
-            {currentExperience.endDate ? ` - ${currentExperience.endDate}` : ''}
-          </p>
-          {currentExperience.description.map((line, i) => (
-            <p key={i} className={`${componentsClass}_description`}>
-              {line}
-            </p>
-          ))}
+          <fieldset className={`${componentsClass}_section`}>
+            <legend className={`${componentsClass}_subtitle`}>
+              <p className={`${componentsClass}_dates`}>
+                {currentExperience.startDate}
+                {currentExperience.endDate
+                  ? ` - ${currentExperience.endDate}`
+                  : ''}
+              </p>
+            </legend>
+            {currentExperience.description.map((line, index) => (
+              <p key={index} className={`${componentsClass}_description`}>
+                {line}
+              </p>
+            ))}
+          </fieldset>
         </div>
       )}
     </div>

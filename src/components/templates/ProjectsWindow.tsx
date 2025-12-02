@@ -18,12 +18,17 @@ const ProjectsWindow: FC = () => {
   }))
 
   const [activeTab, setActiveTab] = useState(categories[0].key)
-  const currentProject = categories.find((c) => c.key === activeTab)?.project
+  const currentProject = categories.find(
+    (category) => category.key === activeTab
+  )?.project
 
   return (
     <div className={componentsClass}>
       <Tabs
-        tabs={categories.map((c) => ({ key: c.key, label: c.label }))}
+        tabs={categories.map((category) => ({
+          key: category.key,
+          label: category.label,
+        }))}
         activeTab={activeTab}
         onTabClick={setActiveTab}
       />
@@ -39,30 +44,46 @@ const ProjectsWindow: FC = () => {
               {currentProject.shortDescription}
             </p>
 
-            {currentProject.longDescription.map((line, i) => (
-              <p key={i} className={`${componentsClass}_longDescription`}>
-                {line}
-              </p>
-            ))}
+            <fieldset className={`${componentsClass}_section`}>
+              <legend className={`${componentsClass}_subtitle`}>
+                {currentProject.subtitles.context}
+              </legend>
+              {currentProject.longDescription.map((line, index) => (
+                <p key={index} className={`${componentsClass}_longDescription`}>
+                  {line}
+                </p>
+              ))}
+            </fieldset>
 
             {currentProject.realizations &&
               currentProject.realizations.length > 0 && (
-                <div className={`${componentsClass}_realizations`}>
-                  <ul>
-                    {currentProject.realizations.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+                <fieldset className={`${componentsClass}_section`}>
+                  <legend className={`${componentsClass}_subtitle`}>
+                    {currentProject.subtitles.steps}
+                  </legend>
+                  <div className={`${componentsClass}_realizations`}>
+                    <ul>
+                      {currentProject.realizations.map((step, index) => (
+                        <li key={index}>{step}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </fieldset>
               )}
 
             {currentProject.languagesUsed &&
               currentProject.languagesUsed.length > 0 && (
-                <div className={`${componentsClass}_technologies`}>
-                  <SkillsChecklist skills={currentProject.languagesUsed} />
-                </div>
+                <fieldset className={`${componentsClass}_section`}>
+                  <legend className={`${componentsClass}_subtitle`}>
+                    {currentProject.subtitles.tools}
+                  </legend>
+                  <div className={`${componentsClass}_technologies`}>
+                    <SkillsChecklist skills={currentProject.languagesUsed} />
+                  </div>
+                </fieldset>
               )}
           </div>
+
           <div className={`${componentsClass}_buttons`}>
             {currentProject.githubLink && (
               <a

@@ -1,27 +1,47 @@
 @use '../../Settings/variables' as *;
+@use '../../Settings/responsive_variables';
+@use '../../Tools/mixins';
+@use '../../Tools/typography';
 
 .m_Tabs {
+   $self: &;
+
    display: flex;
    flex-wrap: wrap;
-   gap: 2px;
+   gap: 0;
+   row-gap: 2px;
+   padding-left: 4px;
 
    &_tab {
-      background-color: $button-face;
-      border: 2px solid #c0c0c0;
-      border-top-color: #f0f0f0;
-      border-left-color: #f0f0f0;
-      padding: 2px 8px;
-      cursor: pointer;
+      @include typography.body;
+      @include mixins.tab;
+
+      flex: 1;
+      padding: 3px 6px;
+      min-height: 20px;
+      margin-right: 2px;
+      margin-bottom: -1px;
+      margin-left: 0;
+      position: relative;
+      z-index: 10;
       white-space: nowrap;
 
-      &:active,
-      &.active,
+
+      &:focus {
+         @include mixins.focus;
+      }
+
+      &:not(&-active) {
+         border-left: 1px solid $button-highlight;
+         border-top-left-radius: 3px;
+      }
+
       &-active {
-         border-top-color: #808080;
-         border-left-color: #808080;
-         border-bottom-color: #f0f0f0;
-         border-right-color: #f0f0f0;
-         background-color: #dcdcdc;
+         @include mixins.tab-active;
+         margin-top: -2px;
+         margin-left: -2px;
+         margin-bottom: 0;
+         z-index: 15;
       }
    }
 }

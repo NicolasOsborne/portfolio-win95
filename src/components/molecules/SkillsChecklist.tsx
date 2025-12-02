@@ -7,10 +7,8 @@ const SkillsChecklist: FC<{ skills: string[] }> = ({ skills }) => {
     <ul className={componentsClass}>
       {skills.map((skill, i) => (
         <li key={i} className={`${componentsClass}_item`}>
-          <label>
-            <input type='checkbox' checked readOnly />
-            <span>{skill}</span>
-          </label>
+          <input type='checkbox' checked readOnly />
+          <label>{skill}</label>
         </li>
       ))}
     </ul>

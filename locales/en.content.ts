@@ -75,9 +75,10 @@ export const contentEn: Content = {
     cvLabel: 'Download my resume',
   },
   skills: {
-    title: 'The different languages I practice',
+    title: 'My different languages',
     devSkills: {
-      subtitle: 'Coding',
+      title: 'Coding',
+      subtitle: 'When I speak to computers',
       list: [
         'HTML',
         'CSS',
@@ -94,14 +95,16 @@ export const contentEn: Content = {
       ],
     },
     languageSkills: {
-      subtitle: 'Languages',
+      title: 'Languages',
+      subtitle: 'When I speak to humans',
       list: [
         'English (My native language)',
         'French (My other native language)',
       ],
     },
     toolSkills: {
-      subtitle: 'Tools',
+      title: 'Tools',
+      subtitle: 'The different tools I use',
       list: [
         'Figma',
         'GitHub',
@@ -115,7 +118,8 @@ export const contentEn: Content = {
       ],
     },
     softSkills: {
-      subtitle: 'Soft skills',
+      title: 'Soft skills',
+      subtitle: 'My skills and soft-skills',
       list: [
         'Front-End Development',
         'Web Integration',
@@ -134,7 +138,8 @@ export const contentEn: Content = {
       ],
     },
     otherSkills: {
-      subtitle: 'Past jobs',
+      title: 'Past jobs',
+      subtitle: "But before all this, I've lived other lives",
       list: [
         'Brewer',
         'Pub Manager',
@@ -154,6 +159,11 @@ export const contentEn: Content = {
       {
         id: 'vetipole',
         title: 'Vétipôle',
+        subtitles: {
+          context: 'Context',
+          tools: 'Languages & tools',
+          steps: 'Steps',
+        },
         shortDescription: 'Website for the Vétipôle veterinary clinic',
         longDescription: [
           'In March 2023, a new veterinary clinic opened its doors in Saint-Jeoire-Prieuré, Savoie.',
@@ -181,6 +191,11 @@ export const contentEn: Content = {
       {
         id: 'ethereal',
         title: 'Ethereal Decibel Company',
+        subtitles: {
+          context: 'Context',
+          tools: 'Languages & tools',
+          steps: 'Steps',
+        },
         shortDescription:
           'Website for the Ethereal Decibel Company association',
         longDescription: [
@@ -210,6 +225,11 @@ export const contentEn: Content = {
       {
         id: 'extellient',
         title: 'Extellient',
+        subtitles: {
+          context: 'Context',
+          tools: 'Languages & tools',
+          steps: 'Steps',
+        },
         shortDescription:
           'Redesign of the website for the Grenoble agency Extellient. Integration and SEO.',
         longDescription: [
@@ -230,6 +250,11 @@ export const contentEn: Content = {
       {
         id: 'dock14',
         title: 'Dock 14',
+        subtitles: {
+          context: 'Context',
+          tools: 'Languages & tools',
+          steps: 'Steps',
+        },
         shortDescription:
           'Implementation of indexing and SEO for the Dock 14 website, Laser Game in Échirolles',
         longDescription: [
@@ -252,6 +277,11 @@ export const contentEn: Content = {
       {
         id: 'portfolio',
         title: 'Portfolio',
+        subtitles: {
+          context: 'Context',
+          tools: 'Languages & tools',
+          steps: 'Steps',
+        },
         shortDescription:
           'Project for the creation and launch of my personal portfolio',
         longDescription: [

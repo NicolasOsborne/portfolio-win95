@@ -1,29 +1,26 @@
 @use '../../Settings/variables' as *;
+@use '../../Tools/mixins';
 
 .m_SkillsChecklist {
    list-style: none;
    padding: 0;
    margin: 0;
-   font-size: 13px;
    display: flex;
-   flex-wrap: wrap;
-   gap: 6px 24px;
+   flex-direction: column;
+   gap: 6px;
 
    &_item {
       display: flex;
+      flex-direction: row;
       align-items: center;
-      gap: 6px;
-      width: 45%;
+      gap: 8px;
       box-sizing: border-box;
 
       input[type='checkbox'] {
-         accent-color: $color-highlight;
-         width: 14px;
-         height: 14px;
-      }
-
-      label {
-         cursor: default;
+         @include mixins.border-input;
+         accent-color: $color-white;
+         width: 12px;
+         height: 12px;
       }
    }
 }

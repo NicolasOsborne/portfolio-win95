@@ -25,9 +25,9 @@ const Window: FC<WindowProps> = ({
   onTouchStart,
   isFocused,
 }) => {
-  const componentsClass = 'o_Window'
-
   const defaultControls = [ControlType.CLOSE]
+
+  const componentsClass = 'o_Window'
 
   return (
     <div className={`${componentsClass} ${className}`}>

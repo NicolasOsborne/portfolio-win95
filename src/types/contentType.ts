@@ -47,6 +47,7 @@ export type AboutContent = {
 }
 
 export type SkillList = {
+  title: string
   subtitle: string
   list: string[]
 }
@@ -63,6 +64,11 @@ export type SkillsContent = {
 export type Project = {
   id: string
   title: string
+  subtitles: {
+    context: string
+    tools: string
+    steps: string
+  }
   shortDescription: string
   longDescription: string[]
   languagesUsed: string[]
