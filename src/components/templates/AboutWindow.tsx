@@ -12,10 +12,10 @@ const AboutWindow: FC = () => {
   return (
     <>
       <div className={componentsClass}>
-        <div className={`${componentsClass}_notepad`}>
+        <div className={`${componentsClass}_content`}>
           <h1 className={`${componentsClass}_title`}>{content.about.title}</h1>
-          {content.about.description.map((line, i) => (
-            <p key={i} className={`${componentsClass}_description`}>
+          {content.about.description.map((line, index) => (
+            <p key={index} className={`${componentsClass}_description`}>
               {line}
             </p>
           ))}

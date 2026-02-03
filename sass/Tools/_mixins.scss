@@ -24,7 +24,25 @@
    max-width: $size;
 }
 
-// Windows 95 borders
+// Windows 95
+
+// Focus
+@mixin focus {
+   outline: none;
+
+   &::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      pointer-events: none;
+      border: 1px dotted $color-black;
+   }
+}
+
+// Borders
 // Border mixins
 @mixin border-raised {
    box-shadow:
@@ -66,6 +84,44 @@
       .5px .5px 0px .5px $button-highlight;
 }
 
+// Tabs
+// Tab border
+@mixin tab {
+   cursor: pointer;
+   background-color: $button-face;
+   box-shadow:
+      inset 0 1px 0 0 $button-highlight,
+      2px 1px 0 -1px $button-shadow,
+      2px 0 0 -1px $button-border,
+      3px 1px 0 -1px $button-border;
+}
+
+// Active tab
+@mixin tab-active {
+   box-shadow:
+      inset 0 1px 0 0 $button-highlight,
+      -2px 1px 0 -1px $button-face,
+      -0.5px 3px 0 0.5px $button-face,
+      -2px 2px 0 0 $button-highlight,
+      -2px 0 0 -1px $button-highlight,
+      1px 2px 0 0 $button-shadow,
+      2px 0 0 -1px $button-border,
+      2px 2px 0 0 $button-border;
+}
+
+// Tab window content
+@mixin tab-content {
+   padding: 12px;
+   background-color: $window-face;
+   border-top: 1px solid $button-highlight;
+   box-shadow:
+      inset .5px .5px 0px .5px $button-highlight,
+      inset 0 0 0 1px $button-shadow,
+      1px 0px 0 0px $button-border,
+      0px 1px 0 0px $button-border,
+      1px 1px 0 0px $button-border;
+}
+
 // Input
 @mixin border-input {
    outline: none;
@@ -80,4 +136,13 @@
    box-shadow:
       inset -1px -1px 0 0 $button-face,
       inset 1px 1px 0 0 $button-border, .5px .5px 0 .5px $button-highlight;
+}
+
+// Section fieldset
+@mixin section-fieldset {
+   border-top: 2px groove $color-grey-lightest;
+   border-left: 2px groove $color-grey-lightest;
+   border-bottom: 1px solid $color-grey-dark;
+   border-right: 1px solid $color-grey-dark;
+   box-shadow: 1px 1px 0 0 $color-grey-lightest;
 }

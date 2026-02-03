@@ -14,36 +14,15 @@
    padding: 2px;
    width: fit-content;
 
-   &_notepad {
+   &_content {
       flex: 1;
-      background-color: $color-white;
-      color: $text-color;
-      font-size: 14px;
       padding: 8px;
-      overflow: auto;
       height: 100%;
       box-sizing: border-box;
-
-      scrollbar-color: #c0c0c0 #ffffff;
-      scrollbar-width: thin;
-
-      &::-webkit-scrollbar {
-         width: 16px;
-         height: 16px;
-      }
-
-      &::-webkit-scrollbar-thumb {
-         background: linear-gradient(145deg, #b0b0b0, #f0f0f0);
-         border: 1px solid #808080;
-      }
-
-      &::-webkit-scrollbar-track {
-         background-color: #e0e0e0;
-      }
    }
 
    &_title {
-      @include typography.body-bold;
+      @include typography.body-l-bold;
       margin-bottom: 16px;
    }
 

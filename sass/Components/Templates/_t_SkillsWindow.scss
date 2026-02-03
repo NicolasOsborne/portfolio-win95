@@ -1,21 +1,30 @@
 @use '../../Settings/variables' as *;
 @use '../../Tools/mixins';
+@use '../../Tools/typography';
 
 .t_SkillsWindow {
    display: flex;
    flex-direction: column;
    height: 100%;
    background-color: $window-face;
-   @include mixins.border-flat;
    padding: 4px;
    box-sizing: border-box;
 
    &_content {
+      @include mixins.tab-content;
+
       flex: 1;
-      background-color: $color-white;
-      border: 2px inset $color-grey-verylight;
       overflow-y: auto;
-      padding: 8px;
-      margin-top: 4px;
+   }
+
+   &_section {
+      @include mixins.section-fieldset;
+   }
+
+   &_subtitle {
+      @include typography.body-m;
+      padding-left: 4px;
+      padding-right: 2px;
+      margin-bottom: 12px;
    }
 }

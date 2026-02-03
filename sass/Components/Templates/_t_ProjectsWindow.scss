@@ -7,27 +7,37 @@
    flex-direction: column;
    height: 100%;
    background-color: $window-face;
-   @include mixins.border-flat;
    padding: 4px;
    box-sizing: border-box;
 
    &_content {
+      @include mixins.tab-content;
       flex: 1;
-      background-color: $color-white;
-      border: 2px inset $color-grey-verylight;
-      padding: 8px;
-      margin-top: 4px;
+   }
+
+   &_section {
+      @include mixins.section-fieldset;
+
+      &:not(:last-child) {
+         margin-bottom: 20px;
+      }
+   }
+
+   &_subtitle {
+      @include typography.body-m;
+      padding-left: 4px;
+      padding-right: 2px;
+      margin-bottom: 12px;
    }
 
    &_title {
-      @include typography.body-bold;
-      margin-bottom: 6px;
+      @include typography.body-l-bold;
+      margin-bottom: 8px;
    }
 
    &_shortDescription {
-      @include typography.body-bold;
-      font-style: italic;
-      margin-bottom: 8px;
+      @include typography.body-m-bold;
+      margin-bottom: 20px;
    }
 
    &_longDescription {
@@ -93,18 +103,7 @@
 
       &:focus,
       &:focus-visible {
-         outline: none;
-
-         &::after {
-            content: '';
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            right: 4px;
-            bottom: 4px;
-            border: 1px dotted $color-black;
-            pointer-events: none;
-         }
+         @include mixins.focus;
       }
    }
 }
